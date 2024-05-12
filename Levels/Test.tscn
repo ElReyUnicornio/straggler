@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dddcfjrts81wl"]
+
+[ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
+[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="2_npxev"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 0, 0, 0)
+material = ExtResource("1_4ials")
+
+[node name="Player" parent="." instance=ExtResource("2_npxev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.58934, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.711413, 0.561968, -0.421999, 0, 0.600476, 0.799643, 0.702774, -0.568876, 0.427187, 0, 2.64675, 0)

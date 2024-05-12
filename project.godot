@@ -13,3 +13,19 @@ config_version=5
 config/name="straggler"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
+
+[xr]
+
+openxr/enabled=true
+openxr/foveation_dynamic=true
+openxr/submit_depth_buffer=true
+shaders/enabled=true

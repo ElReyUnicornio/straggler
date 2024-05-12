@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bynmc5a51qwkg"]
+
+[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_vr8sf"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_mbu72"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_tw37i"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_c4qv3"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_t4i1r"]
+
+[node name="Player" type="XROrigin3D"]
+script = ExtResource("1_vr8sf")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="XRleftHand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRleftHand" instance=ExtResource("2_mbu72")]
+
+[node name="MovementDirect" parent="XRleftHand" instance=ExtResource("2_tw37i")]
+strafe = true
+
+[node name="XRrightHand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XRrightHand" instance=ExtResource("4_t4i1r")]
+
+[node name="PlayerBody" parent="." instance=ExtResource("4_c4qv3")]
