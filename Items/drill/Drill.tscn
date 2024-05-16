@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://djxn6rsrh4dwb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vi88c"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_fp0d4"]
+
+[node name="Drill" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, -0.0521634)
+mesh = SubResource("BoxMesh_vi88c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0.0972867)
+layers = 513
+mesh = SubResource("PrismMesh_fp0d4")

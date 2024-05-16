@@ -1,19 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=5 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
+[ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
 [ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="2_npxev"]
+[ext_resource type="PackedScene" uid="uid://doltx5f3mr3w7" path="res://Objects/Cube.tscn" id="4_yfb25"]
 
 [node name="Node3D" type="Node3D"]
 
+[node name="ClimbableRock" parent="." instance=ExtResource("1_axmie")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.00057, 2.05538, -4.96423)
+
+[node name="ClimbableRock2" parent="." instance=ExtResource("1_axmie")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.56489, 3.00468, -4.96423)
+
+[node name="ClimbableRock3" parent="." instance=ExtResource("1_axmie")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.00889, 4.41967, -4.96423)
+
+[node name="ClimbableRock4" parent="." instance=ExtResource("1_axmie")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.65317, 5.83783, -4.96423)
+
+[node name="ClimbableRock5" parent="." instance=ExtResource("1_axmie")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.98531, 6.90399, -4.96423)
+
+[node name="ClimbableRock6" parent="." instance=ExtResource("1_axmie")]
+transform = Transform3D(4.93294, 0, 0, 0, 6.76645, 0, 0, 0, 0.5, 2.48199, 3.90507, -4.96423)
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_overlay = ExtResource("1_4ials")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 0, 0, 0)
 material = ExtResource("1_4ials")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00921631, 3.97836, -5.5)
+size = Vector3(11.9425, 6.95673, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 2.49731)
+size = Vector3(1, 1, 4.99756)
+
 [node name="Player" parent="." instance=ExtResource("2_npxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.58934, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711413, 0.561968, -0.421999, 0, 0.600476, 0.799643, 0.702774, -0.568876, 0.427187, 0, 2.64675, 0)
+
+[node name="PickableObject" parent="." instance=ExtResource("4_yfb25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 4)
+
+[node name="PickableObject2" parent="." instance=ExtResource("4_yfb25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 3)

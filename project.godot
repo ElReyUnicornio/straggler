@@ -23,6 +23,11 @@ XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd
 
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
 
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_3="Pickable_object"
+
 [xr]
 
 openxr/enabled=true

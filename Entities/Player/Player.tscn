@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bynmc5a51qwkg"]
+[gd_scene load_steps=10 format=3 uid="uid://bynmc5a51qwkg"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_vr8sf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_mbu72"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_tw37i"]
+[ext_resource type="PackedScene" uid="uid://djxn6rsrh4dwb" path="res://Items/drill/Drill.tscn" id="3_4330l"]
+[ext_resource type="PackedScene" uid="uid://bxm1ply47vaan" path="res://addons/godot-xr-tools/functions/movement_climb.tscn" id="4_1ktav"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_c4qv3"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_t4i1r"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_es4jl"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="7_pvr47"]
 
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_vr8sf")
@@ -16,12 +20,29 @@ tracker = &"left_hand"
 
 [node name="LeftHand" parent="XRleftHand" instance=ExtResource("2_mbu72")]
 
+[node name="Drill2" parent="XRleftHand/LeftHand" instance=ExtResource("3_4330l")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.109, 0, 0.047)
+
 [node name="MovementDirect" parent="XRleftHand" instance=ExtResource("2_tw37i")]
 strafe = true
+
+[node name="MovementClimb" parent="XRleftHand" instance=ExtResource("4_1ktav")]
+
+[node name="FunctionPickup" parent="XRleftHand" instance=ExtResource("5_es4jl")]
 
 [node name="XRrightHand" type="XRController3D" parent="."]
 tracker = &"right_hand"
 
 [node name="RightHand" parent="XRrightHand" instance=ExtResource("4_t4i1r")]
+
+[node name="Drill" parent="XRrightHand/RightHand" instance=ExtResource("3_4330l")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.109018, 0, 0.0468304)
+
+[node name="FunctionPickup" parent="XRrightHand" instance=ExtResource("5_es4jl")]
+
+[node name="MovementClimb" parent="XRrightHand" instance=ExtResource("4_1ktav")]
+
+[node name="MovementJump" parent="XRrightHand" instance=ExtResource("7_pvr47")]
+jump_button_action = "ax_button"
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_c4qv3")]

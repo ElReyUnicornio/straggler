@@ -31,7 +31,7 @@ var key_map = {
 	KEY_6: "grip_touch",
 	KEY_7: "secondary_click",
 	KEY_8: "secondary_touch",
-	KEY_9: "",
+	KEY_9: "trigger_click",
 	KEY_0: "",
 	KEY_MINUS: "primary_click",
 	KEY_EQUAL: "primary_touch",
@@ -166,7 +166,6 @@ func camera_height(event: InputEventMouseButton):
 func simulate_joysticks():
 	var vec_left = vector_key_mapping(KEY_D, KEY_A, KEY_W, KEY_S)
 	left_tracker.set_input("primary", vec_left)
-	print(left_tracker.get_input("primary"))
 	var vec_right = vector_key_mapping(KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN)
 	
 	right_tracker.set_input("primary", vec_right)

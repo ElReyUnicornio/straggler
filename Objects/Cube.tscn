@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://doltx5f3mr3w7"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_m5ydh"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="2_r6csb"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_dg15v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e1ils"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xx3kt"]
+albedo_color = Color(0, 0.807843, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwiga"]
+material = SubResource("StandardMaterial3D_xx3kt")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="PickableObject" instance=ExtResource("1_m5ydh")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("BoxShape3D_e1ils")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_hwiga")
+
+[node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("2_r6csb")]
+transform = Transform3D(0.701509, 0.655015, -0.280784, -0.682471, 0.730913, 0, 0.205229, 0.191627, 0.959771, 0.135601, -0.0499428, 0)
+visible = true
+
+[node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("3_dg15v")]
+transform = Transform3D(0.86185, -0.432815, 0.264358, 0.386601, 0.898039, 0.209915, -0.328258, -0.0787148, 0.941302, -0.145489, -0.0779811, -0.0192517)
+visible = true
