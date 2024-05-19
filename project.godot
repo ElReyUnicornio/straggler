@@ -25,8 +25,14 @@ enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr
 
 [layer_names]
 
-3d_physics/layer_1="Player"
-3d_physics/layer_3="Pickable_object"
+3d_physics/layer_1="world"
+3d_physics/layer_2="hitbox"
+3d_physics/layer_3="hurtbox"
+
+[rendering]
+
+renderer/rendering_method.mobile="forward_plus"
+renderer/rendering_method.web="forward_plus"
 
 [xr]
 

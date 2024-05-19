@@ -11,6 +11,8 @@ material = SubResource("StandardMaterial3D_v5o7k")
 [node name="ClimbableRock" type="Node3D"]
 
 [node name="Climbable" parent="." instance=ExtResource("1_s6jrm")]
+collision_layer = 262145
+collision_mask = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_nfkk7")

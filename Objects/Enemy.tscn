@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct2wfqpp5fjar"]
+
+[ext_resource type="PackedScene" uid="uid://te2s6u322q3s" path="res://Components/Hurtbox.tscn" id="1_207ny"]
+[ext_resource type="Script" path="res://Objects/Enemy.gd" id="1_xbg6i"]
+[ext_resource type="Script" path="res://Entities/Health.gd" id="2_sh11s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71s6i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b386v"]
+albedo_color = Color(0.364706, 1, 0.337255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pm0rv"]
+material = SubResource("StandardMaterial3D_b386v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4r4k"]
+
+[node name="Enemy" type="RigidBody3D"]
+script = ExtResource("1_xbg6i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_71s6i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pm0rv")
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_207ny")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("BoxShape3D_e4r4k")
+
+[node name="Health" type="Node3D" parent="Hurtbox"]
+script = ExtResource("2_sh11s")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869346, 0)
+billboard = 1
+text = "SEXO"
+
+[connection signal="die" from="Hurtbox/Health" to="." method="_on_health_die"]
+[connection signal="health_changed" from="Hurtbox/Health" to="." method="_on_health_health_changed"]
