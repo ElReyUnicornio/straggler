@@ -19,6 +19,13 @@ config/icon="res://icon.svg"
 XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 
+[display]
+
+window/size/borderless=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
@@ -33,6 +40,7 @@ enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr
 
 renderer/rendering_method.mobile="forward_plus"
 renderer/rendering_method.web="forward_plus"
+anti_aliasing/quality/msaa_3d=1
 
 [xr]
 

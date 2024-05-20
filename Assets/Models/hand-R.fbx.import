@@ -42,6 +42,14 @@ _subresources={
 "shield": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/HandShield.tres"
+},
+"universe ball": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/universe.tres"
+},
+"universe outline": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/universeOutline.tres"
 }
 }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bynmc5a51qwkg"]
+[gd_scene load_steps=13 format=3 uid="uid://bynmc5a51qwkg"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_vr8sf"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_mbu72"]
@@ -12,19 +12,30 @@
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="7_pvr47"]
 [ext_resource type="PackedScene" uid="uid://ch22y0g5oy8fy" path="res://Assets/Models/hand-R.fbx" id="11_58rih"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m4r3v"]
+size = Vector3(0.300049, 0.798096, 1.17383)
+
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_vr8sf")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 
 [node name="XRleftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51258)
 tracker = &"left_hand"
 
 [node name="Drill2" parent="XRleftHand" instance=ExtResource("3_4330l")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.109, 0, 0.047)
+visible = false
 
 [node name="Hand-L" parent="XRleftHand" instance=ExtResource("3_igvvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0493017, 0.143982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.144)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="XRleftHand/Hand-L"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRleftHand/Hand-L/RigidBody3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0092041, 0.0060791, -0.0670606)
+shape = SubResource("BoxShape3D_m4r3v")
 
 [node name="LeftHand" parent="XRleftHand" instance=ExtResource("2_mbu72")]
 visible = false
@@ -37,12 +48,24 @@ strafe = true
 [node name="FunctionPickup" parent="XRleftHand" instance=ExtResource("5_es4jl")]
 
 [node name="XRrightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51258)
 tracker = &"right_hand"
 
 [node name="Drill" parent="XRrightHand" instance=ExtResource("3_4330l")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.109018, 0, 0.0468304)
+visible = false
+
+[node name="Hand-R" parent="XRrightHand" instance=ExtResource("11_58rih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.144)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="XRrightHand/Hand-R"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRrightHand/Hand-R/RigidBody3D2"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0092041, 0.0060791, -0.0670606)
+shape = SubResource("BoxShape3D_m4r3v")
 
 [node name="RightHand" parent="XRrightHand" instance=ExtResource("4_t4i1r")]
+visible = false
 
 [node name="FunctionPickup" parent="XRrightHand" instance=ExtResource("5_es4jl")]
 
@@ -52,6 +75,4 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.1090
 jump_button_action = "ax_button"
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_c4qv3")]
-
-[node name="Root Scene" parent="." instance=ExtResource("11_58rih")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.848836, 0, 0.0162102)
+player_height_max = 2.0

@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dmjuw3g183vto"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/universe.gdshader" id="1_u8b8u"]
+
+[sub_resource type="Gradient" id="Gradient_pyvlw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.309859, 0.746479)
+colors = PackedColorArray(0.122252, 0.122252, 0.122252, 1, 0.581033, 0.581033, 0.581033, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g5xpv"]
+gradient = SubResource("Gradient_pyvlw")
+
+[sub_resource type="Gradient" id="Gradient_bjhkv"]
+offsets = PackedFloat32Array(0, 0.267606)
+colors = PackedColorArray(0.9343, 0.936582, 0.964672, 1, 0.145901, 0.17557, 0.540732, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a3kde"]
+gradient = SubResource("Gradient_bjhkv")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_u8b8u")
+shader_parameter/color1 = Color(0.192157, 0.207843, 0.454902, 1)
+shader_parameter/color2 = Color(0.192157, 0.207843, 0.454902, 1)
+shader_parameter/color3 = Color(0.170416, 0.849524, 0.995572, 1)
+shader_parameter/color4 = Color(0.192157, 0.207843, 0.454902, 1)
+shader_parameter/stars_intensity = 1.0
+shader_parameter/star_density = 100.0
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_a3kde")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_g5xpv")
