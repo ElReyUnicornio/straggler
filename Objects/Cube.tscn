@@ -12,13 +12,12 @@ material = ExtResource("2_ib1vh")
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Cube" instance=ExtResource("1_m5ydh")]
-collision_layer = 1
-collision_mask = 1
-picked_up_layer = 1
+collision_layer = 16
+collision_mask = 25
+picked_up_layer = 8
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-visible = false
 shape = SubResource("BoxShape3D_e1ils")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]

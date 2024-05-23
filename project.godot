@@ -35,6 +35,8 @@ enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr
 3d_physics/layer_1="world"
 3d_physics/layer_2="hitbox"
 3d_physics/layer_3="hurtbox"
+3d_physics/layer_4="hands"
+3d_physics/layer_5="interactable"
 
 [rendering]
 

@@ -51,20 +51,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00921631, 3.97836, -5.5)
 size = Vector3(11.9425, 6.95673, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 2.49731)
-size = Vector3(1, 1, 4.99756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25146, 1, 2.49731)
+size = Vector3(0.50293, 1, 4.99756)
 
 [node name="Player" parent="." instance=ExtResource("2_npxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.58934, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711413, 0.561968, -0.421999, 0, 0.600476, 0.799643, 0.702774, -0.568876, 0.427187, 0, 2.64675, 0)
-
-[node name="PickableObject" parent="." instance=ExtResource("4_yfb25")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 4)
-
-[node name="PickableObject2" parent="." instance=ExtResource("4_yfb25")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60166, 2, 3.53003)
 
 [node name="Enemy" parent="." instance=ExtResource("5_dm87h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37926, 1.32219, 2.38246)
@@ -79,10 +73,16 @@ viewport_size = Vector2(1280, 720)
 [node name="Visible" parent="Viewport2Din3D" instance=ExtResource("8_gje3o")]
 
 [node name="ButtonInteractable" parent="." instance=ExtResource("6_0ny87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.55887, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2256, 1.55887, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xabsc")
+
+[node name="Cube" parent="." instance=ExtResource("4_yfb25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27776, 1.77771, 2.15469)
+
+[node name="Cube2" parent="." instance=ExtResource("4_yfb25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22761, 1.71611, 4.08747)
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

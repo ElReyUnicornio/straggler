@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bynmc5a51qwkg"]
+[gd_scene load_steps=18 format=3 uid="uid://bynmc5a51qwkg"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_vr8sf"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_tw37i"]
@@ -12,10 +12,43 @@
 [ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="10_tuuiw"]
 [ext_resource type="PackedScene" uid="uid://ch22y0g5oy8fy" path="res://Assets/Models/hand-R.fbx" id="11_58rih"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0wolx"]
+animation = &"Grip"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ku8s"]
+animation = &"Grip"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jl114"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5dmpp"]
+animation = &"Grip 5"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_if85n"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y2gna"]
+graph_offset = Vector2(-536, 11)
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_0wolx")
+nodes/ClosedHand1/position = Vector2(-600, 300)
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_2ku8s")
+nodes/ClosedHand2/position = Vector2(-360, 300)
+nodes/Grip/node = SubResource("AnimationNodeBlend2_jl114")
+nodes/Grip/position = Vector2(0, 20)
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_5dmpp")
+nodes/OpenHand/position = Vector2(-600, 100)
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_if85n")
+nodes/Trigger/position = Vector2(-360, 20)
+node_connections = [&"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1", &"output", 0, &"Grip"]
+
 [node name="Player" type="XROrigin3D"]
+current = true
 script = ExtResource("1_vr8sf")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
 
 [node name="XRleftHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51258)
@@ -33,12 +66,15 @@ strafe = true
 [node name="MovementClimb" parent="XRleftHand" instance=ExtResource("4_1ktav")]
 
 [node name="FunctionPickup" parent="XRleftHand" instance=ExtResource("5_es4jl")]
-grab_collision_mask = 1
-ranged_collision_mask = 1
+grab_collision_mask = 16
+ranged_collision_mask = 16
 
 [node name="LeftPhysicsHand" parent="XRleftHand" instance=ExtResource("7_owt0w")]
 visible = false
-collision_layer = 1
+collision_layer = 24
+
+[node name="AnimationTree" parent="XRleftHand/LeftPhysicsHand" index="1"]
+tree_root = SubResource("AnimationNodeBlendTree_y2gna")
 
 [node name="XRrightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51258)
@@ -51,6 +87,8 @@ transform = Transform3D(-4.37114e-08, 1, 0, 1, 4.37114e-08, -8.74228e-08, -8.742
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0308969, -0.0496793, 0.144)
 
 [node name="FunctionPickup" parent="XRrightHand" instance=ExtResource("5_es4jl")]
+grab_collision_mask = 327696
+ranged_collision_mask = 16
 
 [node name="MovementClimb" parent="XRrightHand" instance=ExtResource("4_1ktav")]
 
@@ -59,7 +97,14 @@ jump_button_action = "ax_button"
 
 [node name="RightPhysicsHand" parent="XRrightHand" instance=ExtResource("10_tuuiw")]
 visible = false
-collision_layer = 1
+collision_layer = 24
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_c4qv3")]
+collision_layer = 524289
+collision_mask = 769
+platform_floor_layers = 4294967041
+platform_wall_layers = 1
 player_height_max = 2.0
+
+[editable path="XRleftHand/LeftPhysicsHand"]
+[editable path="XRleftHand/LeftPhysicsHand/Hand_Nails_low_L"]
