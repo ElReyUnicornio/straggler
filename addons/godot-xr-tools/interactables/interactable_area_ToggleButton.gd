@@ -1,9 +1,10 @@
 @tool
-class_name XRToolsInteractableAreaButton
+class_name XRToolsInteractableAreaToggleButton
 extends Area3D
 
 
 ## XR Tools Interactable Area Button script
+##
 ## The interactable area button detects objects and areas intering its
 ## area, and moves an associated button object using a tween to animate
 ## the movement.
@@ -64,13 +65,13 @@ func _ready():
 
 # Called when an area or body enters the button area
 func _on_button_entered(item: Node3D) -> void:
+	if !_trigger_items.is_empty(): return
+	# Add to the dictionary of trigger items
 	# Add to the dictionary of trigger items
 	_trigger_items[item] = item
 
 	# Detect transition to pressed
 	if !pressed:
-		# Update state to pressed
-		pressed = true
 
 		# Kill the current tween
 		if _tween:
@@ -83,19 +84,9 @@ func _on_button_entered(item: Node3D) -> void:
 		_tween.tween_property(_button, "position", _button_down, duration)
 
 		# Emit the pressed signal
-		print("entered")
 		button_pressed.emit(self)
-
-
-# Called when an area or body exits the button area
-func _on_button_exited(item: Node3D) -> void:
-	# Remove from the dictionary of triggered items
-	_trigger_items.erase(item)
-
-	# Detect transition to released
-	if pressed and _trigger_items.is_empty():
-		# Update state to released
-		pressed = false
+	
+	if pressed:
 
 		# Kill the current tween
 		if _tween:
@@ -108,9 +99,15 @@ func _on_button_exited(item: Node3D) -> void:
 		_tween.tween_property(_button, "position", _button_up, duration)
 
 		# Emit the released signal
-		print("exited")
 		button_released.emit(self)
+		
+	pressed = !pressed
 
+
+# Called when an area or body exits the button area
+func _on_button_exited(item: Node3D) -> void:
+	# Remove from the dictionary of triggered items
+	_trigger_items.erase(item)
 
 # Check button configuration
 func _get_configuration_warnings() -> PackedStringArray:

@@ -11,7 +11,8 @@ func _ready():
 	_controller.connect("button_released", _on_button_released)
 
 func _process(delta):
-	if active_target:
+	if !active_target: return
+	if get_node_or_null(active_target.get_path()):
 		var distance = global_position.distance_to(active_target.global_position)
 		if distance > 1:
 			enabled = true
