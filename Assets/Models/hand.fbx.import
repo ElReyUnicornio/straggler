@@ -3,19 +3,19 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cqpup007wify6"
-path="res://.godot/imported/hand-L.fbx-b6c09959c5e5cfaa5a12898b2bcef59e.scn"
+uid="uid://4bdmtajhr1ek"
+path="res://.godot/imported/hand.fbx-255ab126a0caa4b18ced15056d2bbbf7.scn"
 
 [deps]
 
-source_file="res://Assets/Models/hand-L.fbx"
-dest_files=["res://.godot/imported/hand-L.fbx-b6c09959c5e5cfaa5a12898b2bcef59e.scn"]
+source_file="res://Assets/Models/hand.fbx"
+dest_files=["res://.godot/imported/hand.fbx-255ab126a0caa4b18ced15056d2bbbf7.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
-nodes/apply_root_scale=true
+nodes/apply_root_scale=false
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -50,6 +50,11 @@ _subresources={
 "universe outline": {
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/universeOutline.tres"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"import/skip_import": true
 }
 }
 }
