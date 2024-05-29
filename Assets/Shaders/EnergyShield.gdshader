@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode depth_draw_never, shadows_disabled, specular_disabled, ambient_light_disabled, unshaded;
+render_mode depth_draw_never, shadows_disabled, specular_disabled, ambient_light_disabled, unshaded, cull_front;
 
 group_uniforms Shield_Color;
 uniform vec3 _shield_color : source_color = vec3(0.0, 0.0, 1.0);
