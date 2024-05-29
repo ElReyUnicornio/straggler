@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://djxn6rsrh4dwb"]
+[gd_scene load_steps=10 format=3 uid="uid://djxn6rsrh4dwb"]
 
 [ext_resource type="PackedScene" uid="uid://3j7l1fr2fymy" path="res://Components/Hitbox.tscn" id="1_bjl7l"]
 [ext_resource type="Script" path="res://Items/drill/Drill.gd" id="1_gwf5o"]
 [ext_resource type="PackedScene" uid="uid://qv4jax8j6sju" path="res://Assets/Models/Taladro.fbx" id="3_ltgut"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/interactables/interactable_area_ToggleButton.gd" id="4_s2gn6"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_npvqe"]
+[ext_resource type="PackedScene" uid="uid://ninycdwl21d7" path="res://UI/Drill_ui.tscn" id="6_uxv0x"]
+[ext_resource type="PackedScene" uid="uid://b72tjxhuudt2c" path="res://Components/Visible.tscn" id="7_pk4r7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vv5tg"]
 height = 0.21641
 radius = 0.0904048
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0isgl"]
+height = 0.0273029
+radius = 0.0309487
 
 [node name="Drill" type="Node3D"]
 script = ExtResource("1_gwf5o")
@@ -30,4 +38,30 @@ disabled = true
 [node name="Root Scene" parent="." instance=ExtResource("3_ltgut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00828907, 0, -0.0575577)
 
+[node name="UIbutton" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101445, -0.0655536, -0.163122)
+collision_layer = 16
+collision_mask = 24
+script = ExtResource("4_s2gn6")
+button = NodePath("../Root Scene/RootNode/Button")
+displacement = Vector3(0, -0.01, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UIbutton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00298313, 0)
+shape = SubResource("CylinderShape3D_0isgl")
+
+[node name="UI" parent="." instance=ExtResource("5_npvqe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.110775, 0.122884, -0.168)
+visible = false
+screen_size = Vector2(0.4, 0.3)
+collision_layer = 5242904
+scene = ExtResource("6_uxv0x")
+viewport_size = Vector2(800, 600)
+
+[node name="Visible" parent="UI" instance=ExtResource("7_pk4r7")]
+
 [connection signal="area_entered" from="collideMonitor" to="." method="_on_collide_monitor_area_entered"]
+[connection signal="button_pressed" from="UIbutton" to="UI/Visible" method="_on_button_pressed"]
+[connection signal="button_released" from="UIbutton" to="UI/Visible" method="_on_button_released"]
+
+[editable path="Root Scene"]

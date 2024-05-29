@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bynmc5a51qwkg"]
+[gd_scene load_steps=10 format=3 uid="uid://bynmc5a51qwkg"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_vr8sf"]
+[ext_resource type="PackedScene" uid="uid://crps3hh6sx8qw" path="res://Items/belt/Belt.tscn" id="2_j3b0b"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_tw37i"]
 [ext_resource type="PackedScene" uid="uid://djxn6rsrh4dwb" path="res://Items/drill/Drill.tscn" id="3_4330l"]
 [ext_resource type="PackedScene" uid="uid://bxm1ply47vaan" path="res://addons/godot-xr-tools/functions/movement_climb.tscn" id="4_1ktav"]
@@ -12,6 +13,9 @@
 [node name="Player" type="XROrigin3D"]
 current = true
 script = ExtResource("1_vr8sf")
+
+[node name="Belt" parent="." instance=ExtResource("2_j3b0b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.85, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 current = true

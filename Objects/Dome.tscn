@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://durt760wo6m2l"]
+
+[ext_resource type="Material" uid="uid://ckgtc5xcvie8c" path="res://Assets/Materials/EnergyShield.tres" id="1_y0spv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kbo0r"]
+material = ExtResource("1_y0spv")
+radius = 15.0
+height = 15.0
+radial_segments = 32
+is_hemisphere = true
+
+[node name="Dome" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kbo0r")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.735341, -0.677698, 0, 0.677698, 0.735341, 0, 0.818388, 0.910161)

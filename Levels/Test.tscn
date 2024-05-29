@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=14 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_y44o3"]
 [ext_resource type="PackedScene" uid="uid://ninycdwl21d7" path="res://UI/Drill_ui.tscn" id="7_bjnj8"]
 [ext_resource type="PackedScene" uid="uid://b72tjxhuudt2c" path="res://Components/Visible.tscn" id="8_gje3o"]
+[ext_resource type="PackedScene" uid="uid://durt760wo6m2l" path="res://Objects/Dome.tscn" id="11_ms6ba"]
 
 [sub_resource type="Sky" id="Sky_jdy7y"]
 sky_material = ExtResource("6_w0h86")
@@ -83,6 +84,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27776, 1.77771, 2.15469)
 
 [node name="Cube2" parent="." instance=ExtResource("4_yfb25")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22761, 1.71611, 4.08747)
+
+[node name="Dome" parent="." instance=ExtResource("11_ms6ba")]
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]
