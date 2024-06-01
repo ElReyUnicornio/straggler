@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="straggler"
-run/main_scene="res://Components/Hurtbox.tscn"
+run/main_scene="res://Levels/Test.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -30,6 +30,10 @@ window/vsync/vsync_mode=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
+
+[godot_xr_tools]
+
+player/standard_height=1.6
 
 [layer_names]
 

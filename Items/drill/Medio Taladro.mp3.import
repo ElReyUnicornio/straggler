@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b608twgedhfi"
+path="res://.godot/imported/Medio Taladro.mp3-fa8409cf8335ef24616fbc407bb1f4c0.mp3str"
+
+[deps]
+
+source_file="res://Items/drill/Medio Taladro.mp3"
+dest_files=["res://.godot/imported/Medio Taladro.mp3-fa8409cf8335ef24616fbc407bb1f4c0.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

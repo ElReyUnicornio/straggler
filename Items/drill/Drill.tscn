@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djxn6rsrh4dwb"]
+[gd_scene load_steps=30 format=3 uid="uid://djxn6rsrh4dwb"]
 
 [ext_resource type="PackedScene" uid="uid://3j7l1fr2fymy" path="res://Components/Hitbox.tscn" id="1_bjl7l"]
 [ext_resource type="Script" path="res://Items/drill/Drill.gd" id="1_gwf5o"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_npvqe"]
 [ext_resource type="PackedScene" uid="uid://ninycdwl21d7" path="res://UI/Drill_ui.tscn" id="6_uxv0x"]
 [ext_resource type="PackedScene" uid="uid://b72tjxhuudt2c" path="res://Components/Visible.tscn" id="7_pk4r7"]
+[ext_resource type="AudioStream" uid="uid://cs5girmdoscvb" path="res://Items/drill/Inicio taladro.mp3" id="8_n0i6i"]
+[ext_resource type="AudioStream" uid="uid://b608twgedhfi" path="res://Items/drill/Medio Taladro.mp3" id="9_qo44u"]
+[ext_resource type="AudioStream" uid="uid://bw6dvr7r2fo4s" path="res://Items/drill/Final.mp3" id="10_nlwvl"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vv5tg"]
 height = 0.21641
@@ -16,6 +19,407 @@ radius = 0.0904048
 height = 0.0273029
 radius = 0.0309487
 
+[sub_resource type="Animation" id="Animation_bcd3p"]
+resource_name = "Drill_start"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Taladro:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.3, -2.5, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root Scene/RootNode/Taladro:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.5708, -0.25, 0, 0.25, 0, -1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root Scene/RootNode/Taladro:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collideMonitor/CollisionMonitor:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drill_start:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drilling:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bv0k7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Taladro:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 1.5708)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root Scene/RootNode/Taladro:rotation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root Scene/RootNode/Taladro:rotation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Root Scene/RootNode/Taladro:rotation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("collideMonitor/CollisionMonitor:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_28fjq"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Taladro:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 1.5708), Vector3(0, -1.5708, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("collideMonitor/CollisionMonitor:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_xunxv"]
+resource_name = "drilling"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Taladro:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3.14159, -0.223642, 2.35841, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root Scene/RootNode/Taladro:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.5708, -0.25, 0, 0.25, 0, -1.5708, -0.25, 0, 0.25, 0, -1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root Scene/RootNode/Taladro:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("collideMonitor/CollisionMonitor:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_2y5tf"]
+resource_name = "Drill_end"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root Scene/RootNode/Taladro:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.3, -2.5, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root Scene/RootNode/Taladro:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.5708, -0.25, 0, 0.25, 0, -1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root Scene/RootNode/Taladro:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collideMonitor/CollisionMonitor:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drill_end:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drilling:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5d4l"]
+_data = {
+"Drill_end": SubResource("Animation_2y5tf"),
+"Drill_start": SubResource("Animation_bcd3p"),
+"RESET": SubResource("Animation_bv0k7"),
+"default": SubResource("Animation_28fjq"),
+"drilling": SubResource("Animation_xunxv")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nlkr2"]
+animation = &"Drill_end"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_potet"]
+animation = &"Drill_start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n4aen"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i2qot"]
+animation = &"drilling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fic0v"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6gtpb"]
+advance_mode = 2
+advance_condition = &"drilling"
+advance_expression = "true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xyx3d"]
+advance_mode = 2
+advance_condition = &"idle"
+advance_expression = "true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i1ofi"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bg3b6"]
+advance_mode = 2
+advance_condition = &"idle"
+advance_expression = "true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nw5xf"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bcalg"]
+states/Drill_end/node = SubResource("AnimationNodeAnimation_nlkr2")
+states/Drill_end/position = Vector2(544, 33)
+"states/Drill_start 2/node" = SubResource("AnimationNodeAnimation_potet")
+"states/Drill_start 2/position" = Vector2(538, 211)
+states/default/node = SubResource("AnimationNodeAnimation_n4aen")
+states/default/position = Vector2(374, 107)
+states/drilling/node = SubResource("AnimationNodeAnimation_i2qot")
+states/drilling/position = Vector2(716, 107)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_fic0v"), "default", "Drill_start 2", SubResource("AnimationNodeStateMachineTransition_6gtpb"), "Drill_start 2", "default", SubResource("AnimationNodeStateMachineTransition_xyx3d"), "Drill_start 2", "drilling", SubResource("AnimationNodeStateMachineTransition_i1ofi"), "drilling", "Drill_end", SubResource("AnimationNodeStateMachineTransition_bg3b6"), "Drill_end", "default", SubResource("AnimationNodeStateMachineTransition_nw5xf")]
+graph_offset = Vector2(-35, 17)
+
 [node name="Drill" type="Node3D"]
 script = ExtResource("1_gwf5o")
 
@@ -24,7 +428,6 @@ script = ExtResource("1_gwf5o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.149002)
 shape = SubResource("CylinderShape3D_vv5tg")
-disabled = true
 
 [node name="collideMonitor" type="Area3D" parent="."]
 collision_layer = 4
@@ -33,10 +436,12 @@ collision_mask = 4
 [node name="CollisionMonitor" type="CollisionShape3D" parent="collideMonitor"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.149002)
 shape = SubResource("CylinderShape3D_vv5tg")
-disabled = true
 
 [node name="Root Scene" parent="." instance=ExtResource("3_ltgut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00828907, 0, -0.0575577)
+
+[node name="Taladro" parent="Root Scene/RootNode" index="2"]
+transform = Transform3D(-0.000446637, 0.000362001, -100, 100, -0.000361999, -0.000446638, -0.000362001, -100, -0.000361999, 0, 0, 0.304115)
 
 [node name="UIbutton" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101445, -0.0655536, -0.163122)
@@ -59,6 +464,32 @@ scene = ExtResource("6_uxv0x")
 viewport_size = Vector2(800, 600)
 
 [node name="Visible" parent="UI" instance=ExtResource("7_pk4r7")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c5d4l")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+deterministic = false
+libraries = {
+"": SubResource("AnimationLibrary_c5d4l")
+}
+tree_root = SubResource("AnimationNodeStateMachine_bcalg")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/drilling = false
+parameters/conditions/idle = true
+
+[node name="drill_start" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+stream = ExtResource("8_n0i6i")
+
+[node name="drilling" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+stream = ExtResource("9_qo44u")
+
+[node name="drill_end" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_nlwvl")
 
 [connection signal="area_entered" from="collideMonitor" to="." method="_on_collide_monitor_area_entered"]
 [connection signal="button_pressed" from="UIbutton" to="UI/Visible" method="_on_button_pressed"]

@@ -21,13 +21,15 @@ func _process(delta):
 
 func _on_button_pressed(control: String):
 	if control == action_button and enabled: 
-		$Hitbox/CollisionShape3D.disabled = false
-		$collideMonitor/CollisionMonitor.disabled = false
+		$AnimationTree["parameters/conditions/drilling"] = true
+		$AnimationTree["parameters/conditions/idle"] = false
 
 func _on_button_released(control: String):
 	if control == action_button: 
-		$Hitbox/CollisionShape3D.disabled = true
+		$AnimationTree["parameters/conditions/drilling"] = false
+		$AnimationTree["parameters/conditions/idle"] = true
 
 func _on_collide_monitor_area_entered(area):
 	active_target = area
 	enabled = false
+	

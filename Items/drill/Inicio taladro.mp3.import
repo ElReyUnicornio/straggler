@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs5girmdoscvb"
+path="res://.godot/imported/Inicio taladro.mp3-70676fffdb2e587174e0f33371fc97fe.mp3str"
+
+[deps]
+
+source_file="res://Items/drill/Inicio taladro.mp3"
+dest_files=["res://.godot/imported/Inicio taladro.mp3-70676fffdb2e587174e0f33371fc97fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
