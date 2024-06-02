@@ -38,4 +38,5 @@ func _on_area_3d_body_entered(body):
 		joints[count].node_b = body.get_path()
 		lasers[count].target = body
 		inventory.append(body)
+		$AudioStreamPlayer3D.play()
 		count += 1

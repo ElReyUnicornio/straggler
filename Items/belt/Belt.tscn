@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://crps3hh6sx8qw"]
+[gd_scene load_steps=7 format=3 uid="uid://crps3hh6sx8qw"]
 
 [ext_resource type="Script" path="res://Items/belt/Belt.gd" id="1_3s1uk"]
 [ext_resource type="Material" uid="uid://c1i0ackqpyi0q" path="res://Assets/Materials/belt.tres" id="1_74ffd"]
 [ext_resource type="PackedScene" uid="uid://bwhk7nkcpadte" path="res://Items/belt/belt_laser.tscn" id="3_itcr1"]
+[ext_resource type="AudioStream" uid="uid://d3bx406vxogn3" path="res://Items/belt/Metal__Anclaje.mp3" id="4_dpbys"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_emcid"]
 material = ExtResource("1_74ffd")
@@ -22,6 +23,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0, 0)
 mesh = SubResource("TorusMesh_emcid")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_ps8mg")
@@ -55,5 +58,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0, -0.13)
 [node name="joint5" type="JoltConeTwistJoint3D" parent="."]
 
 [node name="joint6" type="JoltConeTwistJoint3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_dpbys")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
