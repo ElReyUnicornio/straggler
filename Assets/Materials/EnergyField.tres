@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://chqp85h6nuv7o"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/EnergyShield.gdshader" id="1_hlqqk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hlqqk")
+shader_parameter/_shield_color = Color(0, 0, 1, 1)
+shader_parameter/_shield_color_brightness = 10.0
+shader_parameter/_shield_intensity = 2.9
+shader_parameter/scale = 10.0
+shader_parameter/line_speed = 0.5
+shader_parameter/ripple_speed = 1.564
+shader_parameter/line_color = Color(0, 1, 0.411765, 1)
+shader_parameter/ripple_color = Color(0.8, 0.945098, 0.494118, 1)
+shader_parameter/surface_color = Color(0.72549, 0.945098, 0, 0.4)
+shader_parameter/sphere_size = 1.0
+shader_parameter/pos1 = Vector3(10000, 0, 0)
+shader_parameter/pos2 = Vector3(10000, 10000, 10000)
+shader_parameter/pos3 = Vector3(10000, 10000, 10000)
+shader_parameter/pos4 = Vector3(10000, 10000, 10000)
+shader_parameter/pos5 = Vector3(10000, 10000, 10000)
+shader_parameter/pos6 = Vector3(10000, 10000, 10000)

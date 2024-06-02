@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1cvmq56vm7s6"]
+
+[ext_resource type="Script" path="res://Components/anchorable.gd" id="1_4kbjt"]
+
+[node name="Anchorable" type="RigidBody3D"]
+script = ExtResource("1_4kbjt")

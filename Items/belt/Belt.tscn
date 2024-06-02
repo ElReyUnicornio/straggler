@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://crps3hh6sx8qw"]
+[gd_scene load_steps=6 format=3 uid="uid://crps3hh6sx8qw"]
 
+[ext_resource type="Script" path="res://Items/belt/Belt.gd" id="1_3s1uk"]
 [ext_resource type="Material" uid="uid://c1i0ackqpyi0q" path="res://Assets/Materials/belt.tres" id="1_74ffd"]
+[ext_resource type="PackedScene" uid="uid://bwhk7nkcpadte" path="res://Items/belt/belt_laser.tscn" id="3_itcr1"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_emcid"]
 material = ExtResource("1_74ffd")
@@ -10,9 +12,10 @@ rings = 12
 ring_segments = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ps8mg"]
-radius = 3.0
+radius = 1.5
 
 [node name="Belt" type="Node3D"]
+script = ExtResource("1_3s1uk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0, 0)
@@ -22,3 +25,35 @@ mesh = SubResource("TorusMesh_emcid")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_ps8mg")
+
+[node name="BeltLaser1" parent="." instance=ExtResource("3_itcr1")]
+transform = Transform3D(0.224951, 0, 0.97437, 0, 1, 0, -0.97437, 0, 0.224951, 0.06, 0, -0.18)
+
+[node name="BeltLaser2" parent="." instance=ExtResource("3_itcr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0, -0.18)
+
+[node name="BeltLaser3" parent="." instance=ExtResource("3_itcr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0, -0.16)
+
+[node name="BeltLaser4" parent="." instance=ExtResource("3_itcr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0, -0.16)
+
+[node name="BeltLaser5" parent="." instance=ExtResource("3_itcr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0, -0.13)
+
+[node name="BeltLaser" parent="." instance=ExtResource("3_itcr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0, -0.13)
+
+[node name="joint" type="JoltConeTwistJoint3D" parent="."]
+
+[node name="joint2" type="JoltConeTwistJoint3D" parent="."]
+
+[node name="joint3" type="JoltConeTwistJoint3D" parent="."]
+
+[node name="joint4" type="JoltConeTwistJoint3D" parent="."]
+
+[node name="joint5" type="JoltConeTwistJoint3D" parent="."]
+
+[node name="joint6" type="JoltConeTwistJoint3D" parent="."]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

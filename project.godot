@@ -31,6 +31,19 @@ window/vsync/vsync_mode=0
 
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/wigglebone/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "blue",
+"res://Components/": "green",
+"res://Entities/": "red",
+"res://Items/": "purple",
+"res://Levels/": "yellow",
+"res://Objects/": "pink",
+"res://Textures/": "orange",
+"res://UI/": "teal"
+}
+
 [godot_xr_tools]
 
 player/standard_height=1.6

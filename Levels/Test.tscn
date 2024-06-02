@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=19 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ninycdwl21d7" path="res://UI/Drill_ui.tscn" id="7_bjnj8"]
 [ext_resource type="PackedScene" uid="uid://b72tjxhuudt2c" path="res://Components/Visible.tscn" id="8_gje3o"]
 [ext_resource type="PackedScene" uid="uid://durt760wo6m2l" path="res://Objects/Dome.tscn" id="11_ms6ba"]
+[ext_resource type="PackedScene" uid="uid://b1cvmq56vm7s6" path="res://Components/anchorable.tscn" id="12_eq46d"]
 
 [sub_resource type="Sky" id="Sky_jdy7y"]
 sky_material = ExtResource("6_w0h86")
@@ -18,6 +19,18 @@ sky_material = ExtResource("6_w0h86")
 [sub_resource type="Environment" id="Environment_xabsc"]
 background_mode = 2
 sky = SubResource("Sky_jdy7y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2eose"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3fo84"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1yvf"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_egwgl"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D"]
 
@@ -56,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25146, 1, 2.49731)
 size = Vector3(0.50293, 1, 4.99756)
 
 [node name="Player" parent="." instance=ExtResource("2_npxev")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.58934, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.86152, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711413, 0.561968, -0.421999, 0, 0.600476, 0.799643, 0.702774, -0.568876, 0.427187, 0, 2.64675, 0)
@@ -86,6 +99,86 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27776, 1.77771, 2.15469)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22761, 1.71611, 4.08747)
 
 [node name="Dome" parent="." instance=ExtResource("11_ms6ba")]
+
+[node name="Cube3" parent="." instance=ExtResource("4_yfb25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338098, 1.17078, 7.51963)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32366, 9.21218)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_2eose")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_3fo84")
+
+[node name="JoltConeTwistJoint3D" type="JoltConeTwistJoint3D" parent="."]
+node_a = NodePath("../RigidBody3D")
+node_b = NodePath("../Cube3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44928, 8.13408)
+
+[node name="Anchorable" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42846, 5.84977)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable"]
+mesh = SubResource("BoxMesh_egwgl")
+
+[node name="Anchorable2" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24078, 2.42846, 5.84977)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable2"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable2"]
+mesh = SubResource("BoxMesh_egwgl")
+
+[node name="Anchorable3" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37523, 2.42846, 5.84977)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable3"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable3"]
+mesh = SubResource("BoxMesh_egwgl")
+
+[node name="Anchorable4" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37523, 2.42846, 10.3339)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable4"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable4"]
+mesh = SubResource("BoxMesh_egwgl")
+
+[node name="Anchorable5" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85904, 2.42846, 10.3339)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable5"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable5"]
+mesh = SubResource("BoxMesh_egwgl")
+
+[node name="Anchorable6" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0652316, 2.42846, 10.3339)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable6"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable6"]
+mesh = SubResource("BoxMesh_egwgl")
+
+[node name="Anchorable7" parent="." instance=ExtResource("12_eq46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.63338, 2.42846, 2.026)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchorable7"]
+shape = SubResource("BoxShape3D_d1yvf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchorable7"]
+mesh = SubResource("BoxMesh_egwgl")
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

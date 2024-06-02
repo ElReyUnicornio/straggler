@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwhk7nkcpadte"]
+
+[ext_resource type="Material" uid="uid://chqp85h6nuv7o" path="res://Assets/Materials/EnergyField.tres" id="1_efx4w"]
+[ext_resource type="Script" path="res://Items/belt/belt_laser.gd" id="1_md5l4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x1pwr"]
+material = ExtResource("1_efx4w")
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.02
+
+[sub_resource type="SphereMesh" id="SphereMesh_368co"]
+material = ExtResource("1_efx4w")
+radius = 0.05
+height = 0.1
+
+[node name="BeltLaser" type="Node3D"]
+script = ExtResource("1_md5l4")
+
+[node name="laser" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_x1pwr")
+
+[node name="field" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_368co")
