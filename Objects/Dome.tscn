@@ -1,15 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://durt760wo6m2l"]
 
-[ext_resource type="Material" uid="uid://ckgtc5xcvie8c" path="res://Assets/Materials/EnergyShield.tres" id="1_y0spv"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_kbo0r"]
-material = ExtResource("1_y0spv")
-radius = 15.0
-height = 15.0
-radial_segments = 32
-is_hemisphere = true
+[ext_resource type="PackedScene" uid="uid://0urjfgae27se" path="res://Assets/Models/Dome.fbx" id="1_q0ns8"]
+[ext_resource type="PackedScene" uid="uid://dq82w2ady4113" path="res://Assets/Models/DomeFractured.fbx" id="2_7xpyc"]
 
 [node name="Dome" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_kbo0r")
+[node name="Normal" parent="." instance=ExtResource("1_q0ns8")]
+
+[node name="Fractured" parent="." instance=ExtResource("2_7xpyc")]
+visible = false
+
+[editable path="Fractured"]
