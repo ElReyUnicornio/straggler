@@ -5,12 +5,11 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_e1qrb")
-shader_parameter/_shield_color = Color(0.588235, 0.988235, 0, 1)
-shader_parameter/_shield_color_brightness = 20.0
+shader_parameter/model_view = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -9.14, 4.962, 9.54, 1)
 shader_parameter/_shield_intensity = 0.6
-shader_parameter/scale = 50.0
+shader_parameter/scale = 0.5
 shader_parameter/line_speed = 0.5
-shader_parameter/ripple_speed = 1.564
+shader_parameter/ripple_speed = 0.489
 shader_parameter/line_color = Color(0.2, 1, 1, 1)
 shader_parameter/ripple_color = Color(0.6, 0.7, 1, 0.7)
 shader_parameter/surface_color = Color(0.0117647, 0.180392, 0.701961, 0.4)

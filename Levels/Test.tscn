@@ -99,6 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27776, 1.77771, 2.15469)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22761, 1.71611, 4.08747)
 
 [node name="Dome" parent="." instance=ExtResource("11_ms6ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="Cube3" parent="." instance=ExtResource("4_yfb25")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338098, 1.17078, 7.51963)

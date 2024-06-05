@@ -1,9 +1,9 @@
 shader_type spatial;
 render_mode depth_draw_never, shadows_disabled, specular_disabled, ambient_light_disabled, unshaded, cull_front;
 
+uniform mat4 model_view;
+
 group_uniforms Shield_Color;
-uniform vec3 _shield_color : source_color = vec3(0.0, 0.0, 1.0);
-uniform float _shield_color_brightness : hint_range(0.25, 20.0, 0.05) = 10.0;
 uniform float _shield_intensity : hint_range(0.25, 5.0, 0.05) = 2.0;
 
 group_uniforms Shield_Hex;
@@ -26,12 +26,11 @@ uniform vec3 pos6 = vec3( 10000, 10000, 10000 );
 
 varying vec3 world_vertex;
 
-float hex_cells( vec2 uv )
-{
-	float x = uv.x * scale;
-	float y = mod( floor( x ), 2.0 ) * 0.5 + ( uv.y * scale / 1.25 );
-	vec2 base_chip = abs( vec2( 0.5 ) - mod( vec2( x, y ), 1.0 ) );
-	return abs( max( base_chip.x * 1.5 + base_chip.y, base_chip.y * 2.0 ) - 1.0 );
+float hex_cells(vec3 position) {
+    float x = position.x * scale;
+    float y = mod(floor(x), 2.0) * 0.5 + (position.y * scale / 1.25);
+    vec2 base_chip = abs(vec2(0.5) - mod(vec2(x, y), 1.0));
+    return abs(max(base_chip.x * 1.5 + base_chip.y, base_chip.y * 2.0) - 1.0);
 }
 
 float saturate(float x) {
@@ -53,7 +52,8 @@ void vertex( )
 
 void fragment( )
 {
-	float hex = hex_cells( UV );
+	vec3 position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+    float hex = hex_cells(world_vertex);
 
 	vec3 final_line_color = clamp( line_color.rgb + ( fract( length( UV * scale * 0.5 ) + TIME * line_speed ) * 2.0 - 1.0 ), vec3( 0.0 ), vec3( 1.0 ) );
 

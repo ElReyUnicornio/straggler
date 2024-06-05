@@ -9,6 +9,7 @@ signal die()
 
 func get_damage(damage: int):
 	health -= damage
+	print(health)
 	health_changed.emit(health)
 	
 	if health <= 0:
