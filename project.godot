@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+GameManager="*res://GameManager.gd"
 
 [display]
 

@@ -52,8 +52,8 @@ void vertex( )
 
 void fragment( )
 {
-	vec3 position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-    float hex = hex_cells(world_vertex);
+	vec3 position = (model_view * vec4(VERTEX, 1.0)).xyz;
+    float hex = hex_cells(position);
 
 	vec3 final_line_color = clamp( line_color.rgb + ( fract( length( UV * scale * 0.5 ) + TIME * line_speed ) * 2.0 - 1.0 ), vec3( 0.0 ), vec3( 1.0 ) );
 
