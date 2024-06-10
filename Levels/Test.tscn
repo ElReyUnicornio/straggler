@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://durt760wo6m2l" path="res://Objects/Dome.tscn" id="11_ms6ba"]
 [ext_resource type="PackedScene" uid="uid://b1cvmq56vm7s6" path="res://Components/anchorable.tscn" id="12_eq46d"]
 
-[sub_resource type="Sky" id="Sky_jdy7y"]
+[sub_resource type="Sky" id="Sky_phmfe"]
 sky_material = ExtResource("6_w0h86")
 
 [sub_resource type="Environment" id="Environment_xabsc"]
 background_mode = 2
-sky = SubResource("Sky_jdy7y")
+sky = SubResource("Sky_phmfe")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2eose"]
 size = Vector3(1, 1.5, 1)

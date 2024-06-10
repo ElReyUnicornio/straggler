@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw0f33lm1o3a2"]
+
+[ext_resource type="PackedScene" uid="uid://bw4emnbaf32u" path="res://Objects/Terrain.tscn" id="1_menls"]
+[ext_resource type="Material" uid="uid://daadfv1kf56lu" path="res://Assets/Materials/Sky.tres" id="1_vfs8r"]
+[ext_resource type="PackedScene" uid="uid://durt760wo6m2l" path="res://Objects/Dome.tscn" id="2_pivbg"]
+[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="3_bdk1k"]
+
+[sub_resource type="Sky" id="Sky_jdy7y"]
+sky_material = ExtResource("1_vfs8r")
+
+[sub_resource type="Environment" id="Environment_jdspg"]
+background_mode = 2
+sky = SubResource("Sky_jdy7y")
+ambient_light_color = Color(0.552956, 0.552956, 0.552956, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k2ggp"]
+radius = 16.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yisxd"]
+top_radius = 16.1
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jdspg")
+
+[node name="Terrain" parent="." instance=ExtResource("1_menls")]
+
+[node name="Dome" parent="." instance=ExtResource("2_pivbg")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_bdk1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.04, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.301, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_k2ggp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("CylinderMesh_yisxd")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 15)
+light_color = Color(0.193933, 0.658264, 0.841686, 1)
+light_energy = 2.067
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+omni_range = 167.346
+omni_attenuation = 0.15932
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, -15)
+light_color = Color(0.364242, 0.682749, 0.385588, 1)
+light_energy = 2.067
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+omni_range = 167.346
+omni_attenuation = 0.15932
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0.735558, 0.677927, 0.873376, 1)

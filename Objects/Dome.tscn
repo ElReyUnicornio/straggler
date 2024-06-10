@@ -13,9 +13,9 @@ data = PackedVector3Array(0.1417, -0.046, -0.0001, 0.1427, -0.0464, 0, 0.15, 0, 
 script = ExtResource("1_xveit")
 
 [node name="Normal" parent="." instance=ExtResource("1_q0ns8")]
+visible = false
 
 [node name="Fractured" parent="." instance=ExtResource("2_7xpyc")]
-visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)

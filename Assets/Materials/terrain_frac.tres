@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cr63jsr3hidii"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/celShading.gdshader" id="1_lw04h"]
+
+[sub_resource type="Gradient" id="Gradient_5yfd0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.338843, 0.741047)
+colors = PackedColorArray(0, 0, 0, 1, 0.137435, 0.140816, 0.145887, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2pbcg"]
+gradient = SubResource("Gradient_5yfd0")
+
+[sub_resource type="Gradient" id="Gradient_r1oyk"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n8fyf"]
+gradient = SubResource("Gradient_r1oyk")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lw04h")
+shader_parameter/albedo = Color(0.28805, 0.234961, 0.220009, 1)
+shader_parameter/enable_fresnel = false
+shader_parameter/color_gradient = SubResource("GradientTexture1D_2pbcg")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_n8fyf")

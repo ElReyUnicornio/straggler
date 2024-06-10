@@ -6,7 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_wdtkr")
 shader_parameter/model_view = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 11.385, -11.22, 0.445, 1)
-shader_parameter/_shield_intensity = 0.3
+shader_parameter/_shield_intensity = 0.25
 shader_parameter/scale = 0.5
 shader_parameter/line_speed = 0.5
 shader_parameter/ripple_speed = 0.7

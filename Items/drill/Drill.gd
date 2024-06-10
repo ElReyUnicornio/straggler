@@ -9,6 +9,7 @@ var enabled := true
 func _ready():
 	_controller.connect("button_pressed", _on_button_pressed)
 	_controller.connect("button_released", _on_button_released)
+	$UI/Visible.hide()
 
 func _process(delta):
 	if !active_target: return

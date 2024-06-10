@@ -3,6 +3,7 @@ render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_toon, specular_
 
 uniform vec4 albedo : source_color;
 uniform sampler2D color_gradient;
+uniform bool enable_fresnel = true;
 uniform sampler2D fresnel_gradient;
 
 varying mat4 modelview_matrix;
@@ -26,6 +27,8 @@ void fragment() {
     if (dotProduct < 0.0) {
         basic_fresnel = fresnel(4.0, -NORMAL, VIEW);
     }
+	
+	if (!enable_fresnel) basic_fresnel = 0.0;
 	
 	ALBEDO = albedo.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 }

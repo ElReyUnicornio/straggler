@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0urjfgae27se"
-path="res://.godot/imported/Dome.fbx-dcc9d2b149a3e5f52fddacdcc4bac0f9.scn"
+uid="uid://dluaoa610gb66"
+path="res://.godot/imported/terrain.fbx-18dca317086376e5ca70541f747191a2.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Dome.fbx"
-dest_files=["res://.godot/imported/Dome.fbx-dcc9d2b149a3e5f52fddacdcc4bac0f9.scn"]
+source_file="res://Assets/Models/terrain.fbx"
+dest_files=["res://.godot/imported/terrain.fbx-18dca317086376e5ca70541f747191a2.scn"]
 
 [params]
 
@@ -31,9 +31,17 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/terrain_frac.tres"
+},
 "Material.001": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/EnergyShield.tres"
+"use_external/path": "res://Assets/Materials/terrain.tres"
+},
+"outline": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/outline.tres"
 }
 }
 }

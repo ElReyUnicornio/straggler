@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="straggler"
-run/main_scene="res://Levels/Test.tscn"
+run/main_scene="res://Levels/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -56,6 +56,10 @@ player/standard_height=1.6
 3d_physics/layer_3="hurtbox"
 3d_physics/layer_4="hands"
 3d_physics/layer_5="interactable"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
 
 [rendering]
 
