@@ -27,7 +27,7 @@ environment = SubResource("Environment_jdspg")
 [node name="Terrain" parent="." instance=ExtResource("1_menls")]
 
 [node name="Dome" parent="." instance=ExtResource("2_pivbg")]
-transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, -0.283, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_bdk1k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.04, 0)

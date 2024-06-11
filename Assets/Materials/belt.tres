@@ -21,5 +21,6 @@ gradient = SubResource("Gradient_ho7ap")
 render_priority = 0
 shader = ExtResource("1_s43c7")
 shader_parameter/albedo = Color(0.886275, 0.435294, 0, 1)
+shader_parameter/enable_fresnel = true
 shader_parameter/color_gradient = SubResource("GradientTexture1D_0d1vk")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_4aoac")

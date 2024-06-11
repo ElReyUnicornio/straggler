@@ -61,6 +61,7 @@ func request_highlight(_from, _on) -> void:
 
 # Called by XRToolsFunctionPickup when this is picked up by a controller
 func pick_up(by: Node3D) -> void:
+	print("picked")
 	# Get the best permanent grab-point
 	var point := _get_grab_point(by)
 	if not point:
@@ -77,6 +78,7 @@ func pick_up(by: Node3D) -> void:
 
 	# Save the grab
 	_grabs[by] = point
+	print(_grabs)
 
 
 # Called by XRToolsFunctionPickup when this is let go by a controller
