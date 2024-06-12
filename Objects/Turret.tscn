@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cau5wgnn28odv"]
+[gd_scene load_steps=12 format=3 uid="uid://cau5wgnn28odv"]
 
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_vy640"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_ey2nw"]
 [ext_resource type="PackedScene" uid="uid://bgyj0ipvh21ou" path="res://Objects/turret_handle.tscn" id="3_nmcf0"]
+[ext_resource type="PackedScene" uid="uid://cs6dxfu5owcgo" path="res://Objects/turret_lever_smooth.tscn" id="4_lbvg5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_466kb"]
 
@@ -13,7 +14,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_aqkai"]
-left_to_right = 0.2
+left_to_right = 0.1
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wbx8t"]
 data = PackedVector3Array(-0.3, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.3, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.3, 0.5, 0.5, -0.3, 0.5, -0.5, 0.5, -0.5, 0.5, -0.3, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.3, 0.5, -0.5, -0.3, 0.5, 0.5, -0.5, -0.5, -0.5, -0.3, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -47,17 +48,16 @@ mesh = SubResource("BoxMesh_466kb")
 shape = SubResource("ConcavePolygonShape3D_11mjq")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.96701e-07, 0.845, 0, -4.5, -3.69361e-08, 0, 0, 0, 2.969, -1.36816, -0.782497, 0)
+transform = Transform3D(-1.72004e-07, 0.845, 0, -3.935, -3.69361e-08, 0, 0, 0, 2.969, -1.36816, -0.831167, 0)
 mesh = SubResource("PrismMesh_aqkai")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wbx8t")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0, 3, -4.04784, -0.94664, 0)
+transform = Transform3D(-1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0, 3, -4.04784, -1.22097, 0)
 mesh = SubResource("CylinderMesh_8adhd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
@@ -72,16 +72,8 @@ transform = Transform3D(1.12892, 0, 0, 0, 5.41127, 0, 0, 0, 0.25221, -0.177577, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.7606, 2.43161, 0)
 viewport_size = Vector2(400, 300)
 
-[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15946, 1.55516, -0.0169809)
-node_a = NodePath("../MeshInstance3D3/StaticBody3D")
-node_b = NodePath("../TurretHandle/InteractableHandle")
-linear_limit_x/enabled = false
-linear_limit_y/enabled = false
-linear_limit_z/enabled = false
-angular_limit_x/enabled = false
-
 [node name="TurretHandle" parent="." instance=ExtResource("3_nmcf0")]
-transform = Transform3D(0.897328, -0.441365, 0, 0.441365, 0.897328, 0, 0, 0, 1, -1.17193, 1.55174, 0)
+transform = Transform3D(-3.06317e-08, -0.713385, 0.700772, -3.11831e-08, 0.700772, 0.713385, -1, 0, -4.37114e-08, -1.17193, 1.11986, 0.253237)
 
-[editable path="TurretHandle"]
+[node name="LeverSmooth" parent="." instance=ExtResource("4_lbvg5")]
+transform = Transform3D(-4.37114e-08, -0.91706, 0.398749, 0, 0.398749, 0.91706, -1, 4.0086e-08, -1.74299e-08, -1.24997, 1.03276, -0.368483)

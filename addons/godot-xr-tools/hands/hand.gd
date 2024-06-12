@@ -335,13 +335,14 @@ func _update_pose() -> void:
 
 	# Apply the open hand pose in the player and blend tree
 	if open_pose:
+		var _animaton_library = _animation_player.get_animation_library(_animation_player.get_animation_library_list()[0])
 		var open_name = _animation_player.find_animation(open_pose)
 		if open_name == "":
 			open_name = "open_hand"
 			if _animation_player.has_animation(open_name):
-				_animation_player.remove_animation(open_name)
+				_animaton_library.remove_animation(open_name)
 
-			_animation_player.add_animation(open_name, open_pose)
+			_animaton_library.add_animation(open_name, open_pose)
 
 		var open_hand_obj : AnimationNodeAnimation = _tree_root.get_node("OpenHand")
 		if open_hand_obj:

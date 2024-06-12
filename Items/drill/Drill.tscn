@@ -458,6 +458,7 @@ shape = SubResource("CylinderShape3D_0isgl")
 
 [node name="UI" parent="." instance=ExtResource("5_npvqe")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.110775, 0.122884, -0.168)
+visible = false
 screen_size = Vector2(0.4, 0.3)
 collision_layer = 5242904
 scene = ExtResource("6_uxv0x")
