@@ -96,7 +96,6 @@ func move_hinge(position: float) -> void:
 	# Update the current positon
 	_hinge_position_rad = position
 	hinge_position = rad_to_deg(position)
-
 	# Emit the moved signal
 	emit_signal("hinge_moved", hinge_position)
 

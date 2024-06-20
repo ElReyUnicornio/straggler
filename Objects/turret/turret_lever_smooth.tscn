@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cs6dxfu5owcgo"]
+[gd_scene load_steps=20 format=3 uid="uid://cs6dxfu5owcgo"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4adif"]
+[ext_resource type="Script" path="res://Objects/turret/turret_lever_smooth.gd" id="1_m4jtp"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/interactables/interactable_hinge.gd" id="2"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/interactables/interactable_handle.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_psbg5"]
@@ -46,6 +47,7 @@ margin = 0.12
 radius = 0.06
 
 [node name="LeverSmooth" type="Node3D"]
+script = ExtResource("1_m4jtp")
 
 [node name="Frame" type="StaticBody3D" parent="."]
 
@@ -61,6 +63,7 @@ transform = Transform3D(1, -1.06581e-14, 0, 1.06581e-14, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="InteractableLever" type="Node3D" parent="LeverOrigin"]
 script = ExtResource("2")
+default_on_release = true
 
 [node name="HingeBody" type="StaticBody3D" parent="LeverOrigin/InteractableLever"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
@@ -107,3 +110,5 @@ target = NodePath("../../../HingeBody/HandleMesh/GrabPointHandLeft")
 
 [node name="GrabPointRedirectRight" parent="LeverOrigin/InteractableLever/HandleOrigin/InteractableHandle" node_paths=PackedStringArray("target") instance=ExtResource("10_2yftn")]
 target = NodePath("../../../HingeBody/HandleMesh/GrabPointHandRight")
+
+[connection signal="hinge_moved" from="LeverOrigin/InteractableLever" to="." method="_on_interactable_lever_hinge_moved"]
