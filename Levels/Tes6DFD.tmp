@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=21 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
-[ext_resource type="Script" path="res://world.gd" id="1_dwqu7"]
 [ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="2_npxev"]
 [ext_resource type="PackedScene" uid="uid://doltx5f3mr3w7" path="res://Objects/Cube.tscn" id="4_yfb25"]
 [ext_resource type="PackedScene" uid="uid://ct2wfqpp5fjar" path="res://Objects/Enemy.tscn" id="5_dm87h"]
@@ -36,7 +35,6 @@ size = Vector3(0.2, 0.2, 0.2)
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_dwqu7")
 
 [node name="ClimbableRock" parent="." instance=ExtResource("1_axmie")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.00057, 2.05538, -4.96423)

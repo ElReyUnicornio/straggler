@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 GameManager="*res://GameManager.gd"
+GlobalPlayer="*res://Player.gd"
 
 [display]
 
@@ -57,6 +58,7 @@ player/standard_height=1.6
 3d_physics/layer_4="hands"
 3d_physics/layer_5="interactable"
 3d_physics/layer_6="belt_area"
+3d_physics/layer_7="stickyWall"
 
 [rendering]
 

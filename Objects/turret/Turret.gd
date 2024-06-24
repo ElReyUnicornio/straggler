@@ -1,8 +1,14 @@
 extends Node3D
 
-@export var movement_speed: float;
-var character: Player;
+@export var movement_speed: float
+@export var bullets: PackedScene
+@export var shoot_delay := 0.2
+var character: Player
 @onready var position_marker := $sitPosition
+@onready var shoot_position := $shootPosition
+
+var btn_shooting: bool = false
+var shooting := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,25 +17,38 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if character and global_rotation_degrees != 0:
-		character.global_rotation = position_marker.global_rotation
-	pass
+	shoot()
 
+func shoot():
+	if shooting and bullets and btn_shooting:
+		shooting = false
+		var instance: Bullet = bullets.instantiate()
+		GameManager.world.add_child(instance)
+		instance.global_position = shoot_position.global_position
+		instance.global_rotation = shoot_position.global_rotation
+		await get_tree().create_timer(shoot_delay)
+		shooting = true
 
 func _on_area_3d_body_entered(body):
 	if body is XRToolsPlayerBody:
-		body.axis_lock_angular_x = true
-		body.axis_lock_angular_y = true
-		body.axis_lock_angular_z = true
+		GlobalPlayer.disableDrill()
 		character = body.get_parent()
 		character.global_position = position_marker.global_position
-		await get_tree().create_timer(0.5)
-		body.axis_lock_linear_y = true
 
 func _on_area_3d_body_exited(body):
 	if body is XRToolsPlayerBody:
-		body.axis_lock_angular_x = false
-		body.axis_lock_angular_y = false
-		body.axis_lock_angular_z = false
-		body.axis_lock_linear_y = false
+		GlobalPlayer.enableDrill()
 		character = null
+		await get_tree().create_timer(1).timeout
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation", Vector3(0,0,0), 1)
+
+
+func _on_lever_smooth_action_pressed():
+	btn_shooting = true
+	shooting = true
+
+
+func _on_lever_smooth_action_released():
+	btn_shooting = false
+	shooting = false

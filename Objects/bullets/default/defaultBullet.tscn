@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwbxx1fn6jq37"]
+
+[ext_resource type="Script" path="res://Components/Hitbox.gd" id="1_1oo2d"]
+[ext_resource type="Material" uid="uid://dmjuw3g183vto" path="res://Assets/Materials/universe.tres" id="1_5sdvx"]
+[ext_resource type="Script" path="res://Objects/bullets/Bullet.gd" id="1_t3hl8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7s5p1"]
+material = ExtResource("1_5sdvx")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j7t40"]
+
+[node name="DefaultBullet" type="Node3D"]
+script = ExtResource("1_t3hl8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_7s5p1")
+
+[node name="Hitbox" type="Area3D" parent="."]
+script = ExtResource("1_1oo2d")
+is_ally = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_j7t40")

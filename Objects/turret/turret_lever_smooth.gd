@@ -1,10 +1,20 @@
 extends Node3D
 
 var parent: Node3D
+var grabbed := false
+
+@export var action_button := "trigger_click"
+@onready var _controller
+
+signal actionPressed()
+signal actionReleased()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	parent = get_parent()
+	_controller = XRHelpers.get_xr_controller(GlobalPlayer.current.get_node("XRrightHand"))
+	_controller.connect("button_pressed", _on_button_pressed)
+	_controller.connect("button_released", _on_button_released)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,13 +24,25 @@ func _process(delta):
 
 func _on_interactable_lever_hinge_moved(angle):
 	var speed_factor = angle / 45
-	var final_angle = parent.movement_speed * speed_factor
-	if parent.global_rotation_degrees.z < 45 or angle < 0:
-		parent.rotate_z(deg_to_rad(final_angle))
-	elif parent.global_rotation_degrees.z > -45 or angle > 0:
-		parent.rotate_z(deg_to_rad(final_angle))
-		
-	if parent.character: 
-		parent.character.rotate_y(deg_to_rad(final_angle))
-		parent.character.global_rotation = parent.position_marker.global_rotation
-		parent.character.global_position = parent.position_marker.global_position
+	var final_angle = parent.movement_speed * -speed_factor
+	if parent.rotation_degrees.z < 46 and parent.rotation_degrees.z > -46:
+		parent.rotate_object_local(Vector3(0,0,1), deg_to_rad(final_angle))
+	if parent.rotation_degrees.z > 46: parent.rotation_degrees.z = 45
+	if parent.rotation_degrees.z < -46: parent.rotation_degrees.z = -45
+
+
+func _on_interactable_lever_grabbed(interactable):
+	grabbed = true
+
+
+func _on_interactable_lever_released(interactable):
+	grabbed = false
+	actionReleased.emit()
+
+func _on_button_pressed(control: String):
+	if control == action_button and grabbed: 
+		actionPressed.emit()
+
+func _on_button_released(control: String):
+	if control == action_button and grabbed: 
+		actionReleased.emit()

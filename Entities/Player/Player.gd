@@ -3,6 +3,7 @@ class_name Player
 var xr_interface: XRInterface
 
 func _ready():
+	GlobalPlayer.current = self
 	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
 		print("OpenXR initialised successfully")

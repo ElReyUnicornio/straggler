@@ -67,6 +67,8 @@ default_on_release = true
 
 [node name="HingeBody" type="StaticBody3D" parent="LeverOrigin/InteractableLever"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+collision_layer = 16
+collision_mask = 8
 
 [node name="BarCollision" type="CollisionShape3D" parent="LeverOrigin/InteractableLever/HingeBody"]
 shape = SubResource("3")
@@ -111,4 +113,6 @@ target = NodePath("../../../HingeBody/HandleMesh/GrabPointHandLeft")
 [node name="GrabPointRedirectRight" parent="LeverOrigin/InteractableLever/HandleOrigin/InteractableHandle" node_paths=PackedStringArray("target") instance=ExtResource("10_2yftn")]
 target = NodePath("../../../HingeBody/HandleMesh/GrabPointHandRight")
 
+[connection signal="grabbed" from="LeverOrigin/InteractableLever" to="." method="_on_interactable_lever_grabbed"]
 [connection signal="hinge_moved" from="LeverOrigin/InteractableLever" to="." method="_on_interactable_lever_hinge_moved"]
+[connection signal="released" from="LeverOrigin/InteractableLever" to="." method="_on_interactable_lever_released"]
