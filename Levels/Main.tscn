@@ -26,7 +26,7 @@ environment = SubResource("Environment_jdspg")
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, -0.283, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_bdk1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27082, 5.34071, 4.00683)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27082, 5.34071, 7.20694)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 15)

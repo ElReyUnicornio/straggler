@@ -32,9 +32,9 @@ var required_chunks: PackedVector3Array
 func _ready() -> void:
 	if Engine.is_editor_hint() or not is_instance_valid(generator):
 		return
-
+	actor = GlobalPlayer.current.get_node("PlayerBody")
 	await get_tree().process_frame
-
+	
 	generator.erase()
 	if load_on_ready:
 		_update_loading(_get_actors_position())
