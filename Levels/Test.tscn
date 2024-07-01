@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=24 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4emnbaf32u" path="res://Objects/Terrain.tscn" id="13_bpd37"]
 [ext_resource type="PackedScene" uid="uid://cau5wgnn28odv" path="res://Objects/turret/Turret.tscn" id="14_bxqqu"]
 [ext_resource type="PackedScene" uid="uid://dwtiuxnll3qeh" path="res://Levels/MineGenerator.tscn" id="16_qx7kg"]
+[ext_resource type="PackedScene" uid="uid://iuljkfh27e1x" path="res://Objects/Minerals/mineral.tscn" id="17_lk1ok"]
 
 [sub_resource type="Sky" id="Sky_phmfe"]
 sky_material = ExtResource("6_w0h86")
@@ -197,7 +198,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61902, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117, 7.851, 0)
 
 [node name="MineGenerator" parent="." instance=ExtResource("16_qx7kg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, -20, -64)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76727, -20, -8)
+
+[node name="Mineral" parent="." instance=ExtResource("17_lk1ok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68325, 1.48374, 4.22576)
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

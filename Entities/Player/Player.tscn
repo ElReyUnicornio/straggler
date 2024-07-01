@@ -288,27 +288,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Button" parent="XRleftHand/Drill2/Root Scene/RootNode" index="0"]
 transform = Transform3D(5.85029e-08, -0.981515, -2.92514e-08, 2.92514e-08, 0, 0.981515, -0.981515, -2.92514e-08, 5.85029e-08, 0.113089, -0.0626517, -0.104723)
 mesh = SubResource("ArrayMesh_p0ucp")
-skeleton = NodePath("")
 
 [node name="Cuerpo del taladro" parent="XRleftHand/Drill2/Root Scene/RootNode" index="1"]
 transform = Transform3D(-9.71082, 0, 0, 0, -9.71082, 4.24473e-07, 0, -4.24473e-07, -9.71082, 0, 0, -0.0250438)
 mesh = SubResource("ArrayMesh_6t6ge")
-skeleton = NodePath("")
 
 [node name="Taladro" parent="XRleftHand/Drill2/Root Scene/RootNode" index="2"]
 transform = Transform3D(-0.000446637, 0.000362001, -100, 100, -0.000361999, -0.000446638, -0.000362001, -100, -0.000361999, 0, 0, 0.304115)
 mesh = SubResource("ArrayMesh_ftmmj")
-skeleton = NodePath("")
 
 [node name="taladro_base" parent="XRleftHand/Drill2/Root Scene/RootNode" index="3"]
 transform = Transform3D(9.48979, 0, 0, 0, 9.48979, -4.14812e-07, 0, 4.14812e-07, 9.48979, 0, 0, 0.206081)
 mesh = SubResource("ArrayMesh_m1rf2")
-skeleton = NodePath("")
 
 [node name="taladro_outline" parent="XRleftHand/Drill2/Root Scene/RootNode" index="4"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0.304115)
 mesh = SubResource("ArrayMesh_0b4mx")
-skeleton = NodePath("")
 
 [node name="UI" parent="XRleftHand/Drill2" index="4"]
 transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, 0.110775, 0.122884, -0.168)
@@ -360,3 +355,4 @@ characterbody = NodePath("../PlayerBody")
 follow_mask = 64
 
 [editable path="XRleftHand/Drill2"]
+[editable path="XRleftHand/Drill2/Root Scene"]

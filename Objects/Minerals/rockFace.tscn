@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://6r38af1nbhfh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojcyk"]
+albedo_color = Color(0.423651, 0.423651, 0.423651, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7ul8o"]
+material = SubResource("StandardMaterial3D_ojcyk")
+size = Vector2(1, 1)
+
+[node name="RockFace" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7ul8o")
