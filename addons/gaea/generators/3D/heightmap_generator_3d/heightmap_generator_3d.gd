@@ -72,7 +72,6 @@ func generate_chunk(chunk_position: Vector3i, starting_grid: GaeaGrid = null) ->
 	chunk_updated.emit(chunk_position)
 	chunk_generation_finished.emit(chunk_position)
 
-
 func _set_grid() -> void:
 	var max_height: int = 0
 	for x in range(settings.world_size.x):

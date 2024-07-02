@@ -4,6 +4,20 @@ class_name Mineral
 
 @export var data: MineralData
 
+const right_coordinates = [
+	Vector3(0.5, 0.5, 0.5),
+	Vector3(0.5, 0.5, -0.5),
+	Vector3(0.5, -0.5, 0.5),
+	Vector3(0.5, -0.5, -0.5),
+]
+
+const left_coordinates = [
+	Vector3(-0.5, 0.5, 0.5),
+	Vector3(-0.5, 0.5, -0.5),
+	Vector3(-0.5, -0.5, 0.5),
+	Vector3(-0.5, -0.5, -0.5),
+]
+
 var active_faces := {
 	'up': null,
 	'down': null,
@@ -18,7 +32,7 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	else:
-		update_faces([1,0,1,0,1,0])
+		scan_and_update_faces()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,20 +43,64 @@ func _process(delta):
 		pass
 
 func _on_health_die():
+	$Hurtbox/CollisionShape3D.disabled = true
 	update_faces([0,0,0,0,0,0])
 	$GPUParticles3D.emitting = true
+	if data.drop:
+		var drop = data.drop.instantiate()
+		GameManager.add_child(drop)
+		drop.global_position = global_position
+		
 	await get_tree().create_timer(0.8).timeout
 	queue_free()
 
 func scan_and_update_faces():
 	var arr = [0,0,0,0,0,0]
-	if !$RayUp.get_collision_point(): arr[1] = 1
-	if !$RayDown.get_collision_point(): arr[1] = 1
-	if !$RayLeft.get_collision_point(): arr[2] = 1
-	if !$RayRight.get_collision_point(): arr[3] = 1
-	if !$RayFront.get_collision_point(): arr[4] = 1
-	if !$RayBack.get_collision_point(): arr[5] = 1
+	var space_state = get_world_3d().direct_space_state
 	
+	#top
+	var target = Vector3(global_position.x, global_position.y + 1.0, global_position.z)
+	var query = PhysicsRayQueryParameters3D.create(global_position, target, 16)
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	query.exclude.append(self)
+	var result = space_state.intersect_ray(query)
+	if len(result) < 1: arr[0] = 1
+	
+	#down
+	target = Vector3(global_position.x, global_position.y - 1.0, global_position.z)
+	query = PhysicsRayQueryParameters3D.create(global_position, target)
+	query.collide_with_areas = true
+	result = space_state.intersect_ray(query)
+	if len(result) < 1: arr[1] = 1
+	
+	#left
+	target = Vector3(global_position.x - 1.0, global_position.y, global_position.z)
+	query = PhysicsRayQueryParameters3D.create(global_position, target)
+	query.collide_with_areas = true
+	result = space_state.intersect_ray(query)
+	if len(result) < 1: arr[2] = 1
+	
+	#right
+	target = Vector3(global_position.x + 1.0, global_position.y, global_position.z)
+	query = PhysicsRayQueryParameters3D.create(global_position, target)
+	query.collide_with_areas = true
+	result = space_state.intersect_ray(query)
+	if len(result) < 1: arr[3] = 1
+	
+	#front
+	target = Vector3(global_position.x, global_position.y, global_position.z + 1.0)
+	query = PhysicsRayQueryParameters3D.create(global_position, target)
+	query.collide_with_areas = true
+	result = space_state.intersect_ray(query)
+	if len(result) < 1: arr[4] = 1
+	
+	#back
+	target = Vector3(global_position.x, global_position.y, global_position.z - 1.0)
+	query = PhysicsRayQueryParameters3D.create(global_position, target)
+	query.collide_with_areas = true
+	result = space_state.intersect_ray(query)
+	if len(result) < 1: arr[5] = 1
 	update_faces(arr)
 
 func update_faces(visibility_matrix: Array):

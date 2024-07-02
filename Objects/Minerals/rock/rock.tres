@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MineralData" load_steps=3 format=3 uid="uid://djvpgqr1wy1ut"]
 
-[ext_resource type="PackedScene" uid="uid://6r38af1nbhfh" path="res://Objects/Minerals/rockFace.tscn" id="1_wloed"]
+[ext_resource type="PackedScene" uid="uid://6r38af1nbhfh" path="res://Objects/Minerals/rock/rockFace.tscn" id="1_wloed"]
 [ext_resource type="Script" path="res://Objects/Minerals/mineralData.gd" id="1_yufig"]
 
 [resource]

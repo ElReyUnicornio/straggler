@@ -86,7 +86,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 10.
 transform = Transform3D(0.839402, -0.434615, 0.326366, -2.09443e-08, 0.600476, 0.799643, -0.543512, -0.671221, 0.504041, 0, 7.7852, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("5_dm87h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71428, 1.32219, 3.05811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37926, 1.32219, 2.38246)
 
 [node name="Viewport2Din3D" parent="." instance=ExtResource("6_y44o3")]
 transform = Transform3D(0.435545, 0, 0.900167, 0, 1, 0, -0.900167, 0, 0.435545, -4.75657, 1.85034, 0.631017)
@@ -198,12 +198,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61902, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117, 7.851, 0)
 
 [node name="MineGenerator" parent="." instance=ExtResource("16_qx7kg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23273, -20, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76727, -20, -8)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="Mineral" parent="StaticBody3D" instance=ExtResource("17_lk1ok")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68325, 1.33186, 4.22576)
+[node name="Mineral" parent="." instance=ExtResource("17_lk1ok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68325, 1.48374, 4.22576)
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

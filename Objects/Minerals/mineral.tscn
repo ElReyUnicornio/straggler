@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://iuljkfh27e1x"]
+[gd_scene load_steps=17 format=3 uid="uid://iuljkfh27e1x"]
 
 [ext_resource type="Script" path="res://Objects/Minerals/Mineral.gd" id="1_pq5mt"]
 [ext_resource type="PackedScene" uid="uid://cjyilbm4ucc7s" path="res://addons/godot-xr-tools/objects/climbable.tscn" id="2_gon8e"]
-[ext_resource type="Resource" uid="uid://djvpgqr1wy1ut" path="res://Objects/Minerals/rock.tres" id="2_xf3x7"]
+[ext_resource type="Resource" uid="uid://djvpgqr1wy1ut" path="res://Objects/Minerals/rock/rock.tres" id="2_n2utt"]
 [ext_resource type="Script" path="res://Components/Hurtbox.gd" id="3_oekjq"]
 [ext_resource type="Script" path="res://Entities/Health.gd" id="4_hmoqp"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ss07b"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsj5e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2gji"]
 
 [sub_resource type="Gradient" id="Gradient_jqysu"]
 
@@ -41,18 +43,17 @@ rings = 1
 
 [sub_resource type="Skin" id="Skin_ogjjf"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ghsbi"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6jit"]
 
-[node name="Mineral" type="Node3D"]
+[node name="Mineral" type="CollisionShape3D"]
+shape = SubResource("BoxShape3D_rsj5e")
 script = ExtResource("1_pq5mt")
-data = ExtResource("2_xf3x7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_ss07b")
+data = ExtResource("2_n2utt")
 
 [node name="Climbable" parent="." instance=ExtResource("2_gon8e")]
+
+[node name="CollisionShape3D" parent="Climbable" index="0"]
+shape = SubResource("BoxShape3D_u2gji")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
@@ -75,28 +76,9 @@ script = ExtResource("4_hmoqp")
 max_health = 150
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-shape = SubResource("BoxShape3D_ghsbi")
-
-[node name="RayDown" type="RayCast3D" parent="."]
-
-[node name="RayUp" type="RayCast3D" parent="."]
-target_position = Vector3(0, 1, 0)
-
-[node name="RayLeft" type="RayCast3D" parent="."]
-target_position = Vector3(-1, 0, 0)
-debug_shape_custom_color = Color(1, 0, 0, 1)
-
-[node name="RayRight" type="RayCast3D" parent="."]
-target_position = Vector3(1, 0, 0)
-debug_shape_custom_color = Color(1, 0, 0, 1)
-
-[node name="RayFront" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, 1)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-
-[node name="RayBack" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -1)
-debug_shape_custom_color = Color(0, 1, 0, 1)
+shape = SubResource("BoxShape3D_l6jit")
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="die" from="Hurtbox/Health" to="." method="_on_health_die"]
+
+[editable path="Climbable"]
