@@ -52,10 +52,23 @@ light_color = Color(0.735558, 0.677927, 0.873376, 1)
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.13441, 0)
+radius = 3.0
+height = 5.0
+sides = 14
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.20351, 0)
+operation = 2
+radius = 2.9
+height = 4.5
+sides = 14
+
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.31671, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59509, 0)
 radius = 16.0
-height = 10.0
+height = 0.001
 sides = 28
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
@@ -63,10 +76,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.28819, 0)
 operation = 2
 radius = 1.0
 sides = 9
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.09763, 0)
-operation = 2
-radius = 14.5
-height = 9.0
-sides = 22

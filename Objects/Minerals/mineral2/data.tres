@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MineralData" load_steps=4 format=3 uid="uid://1ih1xl1tju5m"]
+
+[ext_resource type="PackedScene" uid="uid://darqijljuoa5h" path="res://Objects/Minerals/mineral2/drop.tscn" id="1_uttua"]
+[ext_resource type="PackedScene" uid="uid://cnnt020udhidq" path="res://Objects/Minerals/mineral2/face.tscn" id="2_qi5wi"]
+[ext_resource type="Script" path="res://Objects/Minerals/mineralData.gd" id="3_stblh"]
+
+[resource]
+script = ExtResource("3_stblh")
+faces = ExtResource("2_qi5wi")
+drop = ExtResource("1_uttua")
+health = 100

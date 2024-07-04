@@ -2,7 +2,9 @@ extends GridMap
 
 const blocks := preload("res://Objects/Minerals/mineral.tscn")
 const rockData := preload("res://Objects/Minerals/rock/rock.tres")
-const mineral1Data := preload("res://Objects/Minerals/mineral1/mineral1.tres")
+const mineral1Data := preload("res://Objects/Minerals/mineral1/data.tres")
+const mineral2Data := preload("res://Objects/Minerals/mineral2/data.tres")
+const mineral3Data := preload("res://Objects/Minerals/mineral3/data.tres")
 
 var replaced_cells := []
 @onready var staticBody := $"../StaticBody3D"
@@ -35,10 +37,13 @@ func new_object(cell: Vector3, cellPos: Vector3, inst:PackedScene, data: Mineral
 
 func _process_terrain():
 	var mineral3 = get_used_cells_by_id(3)
+	var mineral2 = get_used_cells_by_id(2)
 	var mineral1 = get_used_cells_by_id(1)
 	var rock = get_used_cells_by_id(0)
 	replace_tile(rock, blocks, rockData)
 	replace_tile(mineral1, blocks, mineral1Data)
+	replace_tile(mineral2, blocks, mineral2Data)
+	replace_tile(mineral3, blocks, mineral3Data)
 	update_grid_visibility()
 
 func _on_heightmap_generator_3d_generation_finished():
