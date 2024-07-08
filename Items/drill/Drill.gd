@@ -1,4 +1,5 @@
 extends Node3D
+class_name Drill
 
 @export var action_button := "trigger_click"
 @onready var _controller := XRHelpers.get_xr_controller(self)
@@ -14,8 +15,17 @@ func _ready():
 	GlobalPlayer.drillEnabledUpdated.connect(_on_state_changed)
 
 func _process(delta):
-	if !active_target: return
+	if !active_target:
+		enabled = true
+		active_target = null
+		$collideMonitor/CollisionMonitor.disabled = true
+		return
 	if get_node_or_null(active_target.get_path()):
+		if active_target.get_parent() is Drill:
+			enabled = true
+			active_target = null
+			$collideMonitor/CollisionMonitor.disabled = true
+			return
 		var distance = global_position.distance_to(active_target.global_position)
 		if distance > 1:
 			enabled = true

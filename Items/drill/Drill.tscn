@@ -473,9 +473,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 deterministic = false
-libraries = {
-"": SubResource("AnimationLibrary_c5d4l")
-}
 tree_root = SubResource("AnimationNodeStateMachine_bcalg")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/drilling = false
