@@ -26,7 +26,7 @@ func shoot():
 		GameManager.world.add_child(instance)
 		instance.global_position = shoot_position.global_position
 		instance.global_rotation = shoot_position.global_rotation
-		await get_tree().create_timer(shoot_delay)
+		await get_tree().create_timer(shoot_delay).timeout
 		shooting = true
 
 func _on_area_3d_body_entered(body):

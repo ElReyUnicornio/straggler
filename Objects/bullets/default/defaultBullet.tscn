@@ -11,12 +11,15 @@ material = ExtResource("1_5sdvx")
 
 [node name="DefaultBullet" type="Node3D"]
 script = ExtResource("1_t3hl8")
+speed = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_7s5p1")
 
 [node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_1oo2d")
 is_ally = true
 

@@ -205,5 +205,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23273, -20, -8)
 [node name="Mineral" parent="StaticBody3D" instance=ExtResource("17_lk1ok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68325, 1.33186, 4.22576)
 
+[node name="Enemy2" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.8734, 19.3962, -4.98881)
+
+[node name="Enemy3" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.8734, 19.3962, -19.4416)
+
+[node name="Enemy4" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8309, 19.3962, -19.4416)
+
+[node name="Enemy5" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4741, 19.3962, -42.7792)
+
+[node name="Enemy8" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5182, 19.3962, -4.60159)
+
+[node name="Enemy9" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.9037, 19.3962, 28.3279)
+
+[node name="Enemy10" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38814, 19.3962, 28.3279)
+
+[node name="Enemy11" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3972, 19.3962, 18.6342)
+
+[node name="Enemy12" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2634, 19.3962, 9.15498)
+
+[node name="Enemy6" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0724, 19.3962, 33.3328)
+
+[node name="Enemy7" parent="." instance=ExtResource("5_dm87h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4831, 19.3962, 54.4177)
+
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

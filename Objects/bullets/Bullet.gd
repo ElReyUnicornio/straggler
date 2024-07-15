@@ -8,7 +8,6 @@ class_name Bullet
 var timer: SceneTreeTimer
 
 func _ready():
-	print("bala")
 	timer = get_tree().create_timer(lifetime)
 	timer.timeout.connect(_on_impact)
 	
@@ -19,4 +18,3 @@ func _process(delta):
 
 func _on_impact():
 	queue_free()
-

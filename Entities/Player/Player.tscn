@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bynmc5a51qwkg"]
+[gd_scene load_steps=28 format=3 uid="uid://bynmc5a51qwkg"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_vr8sf"]
 [ext_resource type="PackedScene" uid="uid://crps3hh6sx8qw" path="res://Items/belt/Belt.tscn" id="2_j3b0b"]
@@ -269,6 +269,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gw82l")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0we1n"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
 [node name="Player" type="XROrigin3D"]
 current = true
 script = ExtResource("1_vr8sf")
@@ -295,6 +299,7 @@ transform = Transform3D(-9.71082, 0, 0, 0, -9.71082, 4.24473e-07, 0, -4.24473e-0
 mesh = SubResource("ArrayMesh_6t6ge")
 
 [node name="Taladro" parent="XRleftHand/Drill2/Root Scene/RootNode" index="2"]
+transform = Transform3D(-0.000446637, 0.000362001, -100, 100, -0.000361999, -0.000446638, -0.000362001, -100, -0.000361999, 0, 0, 0.304115)
 mesh = SubResource("ArrayMesh_ftmmj")
 
 [node name="taladro_base" parent="XRleftHand/Drill2/Root Scene/RootNode" index="3"]
@@ -321,10 +326,12 @@ ranged_collision_mask = 16
 collision_layer = 24
 
 [node name="FunctionPointer" parent="XRleftHand" instance=ExtResource("10_elvml")]
+distance = 1.0
 show_laser = 2
 laser_length = 1
+laser_material = SubResource("StandardMaterial3D_0we1n")
+show_target = true
 collision_mask = 5242904
-collide_with_bodies = false
 collide_with_areas = true
 
 [node name="XRrightHand" type="XRController3D" parent="."]
@@ -346,6 +353,14 @@ jump_button_action = "ax_button"
 [node name="LeftPhysicsHand" parent="XRrightHand" instance=ExtResource("7_owt0w")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 24
+
+[node name="FunctionPointer" parent="XRrightHand" instance=ExtResource("10_elvml")]
+distance = 1.0
+show_laser = 2
+laser_length = 1
+show_target = true
+collision_mask = 5242904
+collide_with_areas = true
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_c4qv3")]
 collision_layer = 524289
