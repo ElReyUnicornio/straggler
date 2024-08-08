@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://caaud2bth2nf8"]
+
+[ext_resource type="Script" path="res://Entities/Enemy/Enemy.gd" id="1_8j0j3"]
+[ext_resource type="Material" uid="uid://bo6p3ndv50pxa" path="res://Assets/Materials/button.tres" id="2_fdo28"]
+[ext_resource type="Script" path="res://Components/Hurtbox.gd" id="3_hrtpf"]
+[ext_resource type="Script" path="res://Entities/Health.gd" id="4_xhl2m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f1jwu"]
+radius = 2.0
+height = 5.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wd2ec"]
+material = ExtResource("2_fdo28")
+radius = 2.0
+height = 5.0
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_8j0j3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("CapsuleShape3D_f1jwu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 3.0
+height = 5.0
+radius = 2.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.968418, 0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("CapsuleMesh_wd2ec")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_hrtpf")
+
+[node name="Health" type="Node3D" parent="Hurtbox"]
+script = ExtResource("4_xhl2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("CapsuleShape3D_f1jwu")
+
+[connection signal="die" from="Hurtbox/Health" to="." method="die"]

@@ -1,6 +1,7 @@
 extends Node
 
 var world: Node3D
+var dome: Node3D
 var paused = false
 
 signal game_start()

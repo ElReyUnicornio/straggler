@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=25 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cau5wgnn28odv" path="res://Objects/turret/Turret.tscn" id="14_bxqqu"]
 [ext_resource type="PackedScene" uid="uid://dwtiuxnll3qeh" path="res://Levels/MineGenerator.tscn" id="16_qx7kg"]
 [ext_resource type="PackedScene" uid="uid://iuljkfh27e1x" path="res://Objects/Minerals/mineral.tscn" id="17_lk1ok"]
+[ext_resource type="PackedScene" uid="uid://caaud2bth2nf8" path="res://Entities/Enemy/Enemy.tscn" id="18_gdmjn"]
 
 [sub_resource type="Sky" id="Sky_phmfe"]
 sky_material = ExtResource("6_w0h86")
@@ -80,7 +81,7 @@ operation = 2
 radius = 1.85685
 
 [node name="Player" parent="." instance=ExtResource("2_npxev")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 10.469, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 9.92469, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.839402, -0.434615, 0.326366, -2.09443e-08, 0.600476, 0.799643, -0.543512, -0.671221, 0.504041, 0, 7.7852, 0)
@@ -237,6 +238,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0724, 19.3962, 33.3328)
 
 [node name="Enemy7" parent="." instance=ExtResource("5_dm87h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4831, 19.3962, 54.4177)
+
+[node name="Enemy14" parent="." instance=ExtResource("18_gdmjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.2362, 19.0525, 20.7648)
+
+[node name="Enemy13" parent="." instance=ExtResource("18_gdmjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.0671, 21.8504, -3.43491)
+
+[node name="Enemy15" parent="." instance=ExtResource("18_gdmjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.0671, 17.0879, 9.02175)
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

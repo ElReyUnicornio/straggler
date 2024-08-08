@@ -7,6 +7,7 @@ var health_component: Health
 
 func _ready():
 	health_component = get_node("Health")
+	area_entered.connect(_on_area_entered)
 	
 func _process(delta):
 	if Engine.is_editor_hint():
