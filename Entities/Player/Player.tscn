@@ -299,7 +299,6 @@ transform = Transform3D(-9.71082, 0, 0, 0, -9.71082, 4.24473e-07, 0, -4.24473e-0
 mesh = SubResource("ArrayMesh_6t6ge")
 
 [node name="Taladro" parent="XRleftHand/Drill2/Root Scene/RootNode" index="2"]
-transform = Transform3D(-0.000446637, 0.000362001, -100, 100, -0.000361999, -0.000446638, -0.000362001, -100, -0.000361999, 0, 0, 0.304115)
 mesh = SubResource("ArrayMesh_ftmmj")
 
 [node name="taladro_base" parent="XRleftHand/Drill2/Root Scene/RootNode" index="3"]
@@ -326,12 +325,12 @@ ranged_collision_mask = 16
 collision_layer = 24
 
 [node name="FunctionPointer" parent="XRleftHand" instance=ExtResource("10_elvml")]
-distance = 1.0
+distance = 5.0
 show_laser = 2
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_0we1n")
 show_target = true
-collision_mask = 5242904
+collision_mask = 5243008
 collide_with_areas = true
 
 [node name="XRrightHand" type="XRController3D" parent="."]
@@ -355,11 +354,11 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 24
 
 [node name="FunctionPointer" parent="XRrightHand" instance=ExtResource("10_elvml")]
-distance = 1.0
+distance = 5.0
 show_laser = 2
 laser_length = 1
 show_target = true
-collision_mask = 5242904
+collision_mask = 5243008
 collide_with_areas = true
 
 [node name="PlayerBody" parent="." instance=ExtResource("4_c4qv3")]

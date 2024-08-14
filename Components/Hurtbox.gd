@@ -26,5 +26,6 @@ func _get_configuration_warnings():
 func _on_area_entered(area):
 	if area is Hitbox:
 		if area.is_ally and is_ally: return
+		if !area.is_ally and !is_ally: return
 		area.impacted.emit()
 		health_component.get_damage(area.damage)

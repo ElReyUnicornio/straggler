@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ninycdwl21d7"]
 
-[ext_resource type="Script" path="res://UI/Exit_button.gd" id="1_7loug"]
+[ext_resource type="Script" path="res://UI/drill/Drill_ui.gd" id="1_mjgcs"]
 
 [node name="DrillUi" type="Control"]
 layout_mode = 3
@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mjgcs")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -33,6 +34,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 106
 text = "Exit"
-script = ExtResource("1_7loug")
 
-[connection signal="button_down" from="Panel/Button" to="Panel/Button" method="_on_button_down"]
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 21.0
+offset_right = 184.0
+offset_bottom = 44.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 45
+text = "Tiempo restante: 2:00"
+
+[connection signal="button_down" from="Panel/Button" to="." method="_on_button_down"]

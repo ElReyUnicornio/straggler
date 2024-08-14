@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qv4jax8j6sju" path="res://Assets/Models/Taladro.fbx" id="3_ltgut"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/interactables/interactable_area_ToggleButton.gd" id="4_s2gn6"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_npvqe"]
-[ext_resource type="PackedScene" uid="uid://ninycdwl21d7" path="res://UI/Drill_ui.tscn" id="6_uxv0x"]
+[ext_resource type="PackedScene" uid="uid://ninycdwl21d7" path="res://UI/drill/Drill_ui.tscn" id="6_bkcyy"]
 [ext_resource type="PackedScene" uid="uid://b72tjxhuudt2c" path="res://Components/Visible.tscn" id="7_pk4r7"]
 [ext_resource type="AudioStream" uid="uid://cs5girmdoscvb" path="res://Items/drill/Inicio taladro.mp3" id="8_n0i6i"]
 [ext_resource type="AudioStream" uid="uid://b608twgedhfi" path="res://Items/drill/Medio Taladro.mp3" id="9_qo44u"]
@@ -460,8 +460,8 @@ shape = SubResource("CylinderShape3D_0isgl")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.110775, 0.122884, -0.168)
 visible = false
 screen_size = Vector2(0.4, 0.3)
-collision_layer = 5242904
-scene = ExtResource("6_uxv0x")
+collision_layer = 5243008
+scene = ExtResource("6_bkcyy")
 viewport_size = Vector2(800, 600)
 
 [node name="Visible" parent="UI" instance=ExtResource("7_pk4r7")]
@@ -473,9 +473,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 deterministic = false
-libraries = {
-"": SubResource("AnimationLibrary_c5d4l")
-}
 tree_root = SubResource("AnimationNodeStateMachine_bcalg")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/drilling = false

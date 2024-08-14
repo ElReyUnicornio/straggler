@@ -27,7 +27,7 @@ func _on_interactable_lever_hinge_moved(angle):
 	print(angle)
 	if angle > -death_zone and angle < death_zone: return
 	var speed_factor = angle / 45
-	var final_angle = parent.movement_speed * -speed_factor
+	var final_angle = parent.vertical_speed * -speed_factor
 	if parent.rotation_degrees.z < 46 and parent.rotation_degrees.z > -46:
 		parent.rotate_object_local(Vector3(0,0,1), deg_to_rad(final_angle))
 	if parent.rotation_degrees.z > 46: parent.rotation_degrees.z = 45

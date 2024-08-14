@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var movement_speed: float
+@export var horizontal_speed: float
+@export var vertical_speed: float
 @export var bullets: PackedScene
 @export var shoot_delay := 0.2
 var character: Player

@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8jyh7omrav51"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_fqs4t"]
+[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="1_pfxm5"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_bxu2v"]
+[ext_resource type="PackedScene" uid="uid://ckhanfui4dnxi" path="res://UI/GameOver/index.tscn" id="3_jh286"]
+[ext_resource type="Material" uid="uid://daadfv1kf56lu" path="res://Assets/Materials/Sky.tres" id="4_vs0ts"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_frmle"]
+size = Vector3(3, 0.1, 3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4f6au"]
+data = PackedVector3Array(-1.5, 0.05, 1.5, 1.5, 0.05, 1.5, -1.5, -0.05, 1.5, 1.5, 0.05, 1.5, 1.5, -0.05, 1.5, -1.5, -0.05, 1.5, 1.5, 0.05, -1.5, -1.5, 0.05, -1.5, 1.5, -0.05, -1.5, -1.5, 0.05, -1.5, -1.5, -0.05, -1.5, 1.5, -0.05, -1.5, 1.5, 0.05, 1.5, 1.5, 0.05, -1.5, 1.5, -0.05, 1.5, 1.5, 0.05, -1.5, 1.5, -0.05, -1.5, 1.5, -0.05, 1.5, -1.5, 0.05, -1.5, -1.5, 0.05, 1.5, -1.5, -0.05, -1.5, -1.5, 0.05, 1.5, -1.5, -0.05, 1.5, -1.5, -0.05, -1.5, 1.5, 0.05, 1.5, -1.5, 0.05, 1.5, 1.5, 0.05, -1.5, -1.5, 0.05, 1.5, -1.5, 0.05, -1.5, 1.5, 0.05, -1.5, -1.5, -0.05, 1.5, 1.5, -0.05, 1.5, -1.5, -0.05, -1.5, 1.5, -0.05, 1.5, 1.5, -0.05, -1.5, -1.5, -0.05, -1.5)
+
+[sub_resource type="Sky" id="Sky_phmfe"]
+sky_material = ExtResource("4_vs0ts")
+
+[sub_resource type="Environment" id="Environment_vmskj"]
+background_mode = 2
+sky = SubResource("Sky_phmfe")
+
+[node name="GameOver" type="Node3D"]
+script = ExtResource("1_fqs4t")
+
+[node name="Player" parent="." instance=ExtResource("1_pfxm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12018, 0)
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("2_bxu2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2449, -3)
+screen_size = Vector2(4, 4)
+collision_layer = 5243008
+scene = ExtResource("3_jh286")
+viewport_size = Vector2(800, 800)
+throttle_fps = 60.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0500988, 0)
+mesh = SubResource("BoxMesh_frmle")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4f6au")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.725218, 0.688519, 0, -0.688519, 0.725218, 0, 4.16453, 3.49224)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vmskj")

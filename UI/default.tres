@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bick8uugjptk2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxlcd"]
+bg_color = Color(0, 0.507539, 0.990185, 0.356863)
+skew = Vector2(0.5, 0)
+border_width_top = 20
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 7
+corner_radius_bottom_right = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi0lm"]
+bg_color = Color(0, 0, 0, 0)
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/styles/normal = SubResource("StyleBoxFlat_sxlcd")
+Panel/styles/panel = SubResource("StyleBoxFlat_bi0lm")

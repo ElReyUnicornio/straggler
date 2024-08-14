@@ -32,5 +32,7 @@ shape = SubResource("ConcavePolygonShape3D_yg53y")
 
 [node name="Health" parent="Hurtbox" instance=ExtResource("4_442qs")]
 
+[connection signal="die" from="Hurtbox/Health" to="." method="_on_health_die"]
+
 [editable path="Normal"]
 [editable path="Fractured"]

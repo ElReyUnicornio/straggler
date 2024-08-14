@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://byflygrv6ltbb"]
+
+[ext_resource type="Script" path="res://Objects/spawner/Spawner.gd" id="1_eq7oj"]
+[ext_resource type="PackedScene" uid="uid://caaud2bth2nf8" path="res://Entities/Enemy/Enemy.tscn" id="2_ohjpi"]
+[ext_resource type="Script" path="res://Assets/resources/numRange.gd" id="3_y62d5"]
+
+[sub_resource type="Resource" id="Resource_j04xp"]
+script = ExtResource("3_y62d5")
+min = 0
+max = 1000
+
+[node name="Spawner" type="Marker3D"]
+gizmo_extents = 5.0
+script = ExtResource("1_eq7oj")
+scenes = Array[PackedScene]([ExtResource("2_ohjpi")])
+chances = Array[ExtResource("3_y62d5")]([SubResource("Resource_j04xp")])
+min_level = Array[int]([0])

@@ -34,7 +34,8 @@ size = Vector3(1.08307, 1.13269, 1.49908)
 
 [node name="Turret" type="Node3D"]
 script = ExtResource("1_jyw37")
-movement_speed = 5.0
+horizontal_speed = 5.0
+vertical_speed = 2.5
 bullets = ExtResource("2_ayy5n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

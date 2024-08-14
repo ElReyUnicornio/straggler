@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckhanfui4dnxi"]
+
+[ext_resource type="Material" uid="uid://dg857eje4efl5" path="res://Assets/Materials/HolographicCanvas.tres" id="1_is55a"]
+[ext_resource type="Theme" uid="uid://bick8uugjptk2" path="res://UI/default.tres" id="2_lg0f0"]
+
+[sub_resource type="Gradient" id="Gradient_brstr"]
+offsets = PackedFloat32Array(0, 0.644068, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5x72s"]
+gradient = SubResource("Gradient_brstr")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yu47b"]
+texture = SubResource("GradientTexture2D_5x72s")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5t3ac"]
+font_size = 50
+font_color = Color(0.575651, 0.745073, 1, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="Index" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+material = ExtResource("1_is55a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lg0f0")
+theme_override_styles/panel = SubResource("StyleBoxTexture_yu47b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -41.5
+offset_right = 171.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_5t3ac")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "RESTART
+"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "BACK TO MENU"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "EXIT TO DESKTOP"

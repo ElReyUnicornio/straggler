@@ -14,7 +14,7 @@ func _process(delta):
 func _on_interactable_hinge_hinge_moved(angle):
 	var fixed_angle = clamp(angle, -180, 180)
 	var speed_factor = fixed_angle / 180
-	var final_angle = parent.movement_speed * speed_factor
+	var final_angle = parent.horizontal_speed * speed_factor
 	
 	parent.rotate_y(deg_to_rad(final_angle))
 	if parent.character: 

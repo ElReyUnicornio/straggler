@@ -59,6 +59,7 @@ player/standard_height=1.6
 3d_physics/layer_5="interactable"
 3d_physics/layer_6="belt_area"
 3d_physics/layer_7="stickyWall"
+3d_physics/layer_8="UI"
 
 [rendering]
 
