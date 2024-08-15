@@ -1,17 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcw6x40hortyg"]
+[gd_scene load_steps=4 format=3 uid="uid://bcw6x40hortyg"]
 
 [ext_resource type="Script" path="res://Components/anchorable.gd" id="1_teamb"]
+[ext_resource type="PackedScene" uid="uid://c0kv6tcjggshp" path="res://Assets/Models/Cristales.fbx" id="2_dk75n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wdmta"]
 radius = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwcos"]
-albedo_color = Color(0.764706, 0.478431, 0.243137, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ldlns"]
-material = SubResource("StandardMaterial3D_iwcos")
-radius = 0.1
-height = 0.2
 
 [node name="Silicon" type="RigidBody3D"]
 collision_layer = 16
@@ -22,5 +15,5 @@ M_name = "silicon"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_wdmta")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ldlns")
+[node name="Root Scene" parent="." instance=ExtResource("2_dk75n")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.1, 0)
