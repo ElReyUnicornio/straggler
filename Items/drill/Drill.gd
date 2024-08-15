@@ -47,5 +47,10 @@ func _on_collide_monitor_area_entered(area):
 	enabled = false
 	
 func _on_state_changed(value: bool):
-	if value: visible = true
-	else: visible = false
+	visible = value
+
+func enable_laser(any):
+	GlobalPlayer.current.change_laser_state(false)
+	
+func disable_laser(any):
+	GlobalPlayer.current.change_laser_state(true)

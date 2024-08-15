@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	na.target_position = GameManager.dome.global_position
 	na.target_desired_distance = 17
+	$"Root Scene/AnimationPlayer".play("Armature|ArmatureAction")
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -23,7 +24,7 @@ func _physics_process(delta):
 		
 	#checks for dome proximity
 	var dome_distance = na.distance_to_target()
-	if dome_distance < 17:
+	if dome_distance < 18:
 		if attacking: return
 		attack()
 		return

@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dddcfjrts81wl"]
+[gd_scene load_steps=25 format=3 uid="uid://dddcfjrts81wl"]
 
 [ext_resource type="Material" uid="uid://bup5uddxubvn0" path="res://Textures/grid_material.tres" id="1_4ials"]
 [ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="1_axmie"]
 [ext_resource type="Script" path="res://world.gd" id="1_dwqu7"]
-[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="2_npxev"]
+[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/XROrigin3D.tscn" id="2_npxev"]
 [ext_resource type="PackedScene" uid="uid://doltx5f3mr3w7" path="res://Objects/Cube.tscn" id="4_yfb25"]
 [ext_resource type="PackedScene" uid="uid://ct2wfqpp5fjar" path="res://Objects/Enemy.tscn" id="5_dm87h"]
 [ext_resource type="PackedScene" uid="uid://dtrhvu3bvr4lw" path="res://Objects/buttonInteractable.tscn" id="6_0ny87"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cau5wgnn28odv" path="res://Objects/turret/Turret.tscn" id="14_bxqqu"]
 [ext_resource type="PackedScene" uid="uid://dwtiuxnll3qeh" path="res://Levels/MineGenerator.tscn" id="16_qx7kg"]
 [ext_resource type="PackedScene" uid="uid://iuljkfh27e1x" path="res://Objects/Minerals/mineral.tscn" id="17_lk1ok"]
+[ext_resource type="PackedScene" uid="uid://dgjnr6f1jv41y" path="res://Objects/mineralCollector/MineralCollector.tscn" id="18_cigrh"]
 
 [sub_resource type="Sky" id="Sky_owoib"]
 sky_material = ExtResource("6_w0h86")
@@ -39,6 +40,7 @@ size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_dwqu7")
+enable_drill = true
 
 [node name="ClimbableRock" parent="." instance=ExtResource("1_axmie")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.00057, 2.05538, -4.96423)
@@ -79,7 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.87355, 0, 0.526258)
 operation = 2
 radius = 1.85685
 
-[node name="Player" parent="." instance=ExtResource("2_npxev")]
+[node name="XROrigin3D" parent="." instance=ExtResource("2_npxev")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 9.92469, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -237,6 +239,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0724, 19.3962, 33.3328)
 
 [node name="Enemy7" parent="." instance=ExtResource("5_dm87h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4831, 19.3962, 54.4177)
+
+[node name="MineralCollector" parent="." instance=ExtResource("18_cigrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55579, -4, 0.91183)
 
 [connection signal="button_pressed" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_pressed"]
 [connection signal="button_released" from="ButtonInteractable" to="Viewport2Din3D/Visible" method="_on_button_released"]

@@ -9,7 +9,7 @@ class_name Game
 var rng := RandomNumberGenerator.new()
 
 #gameObjects
-var world: Node3D
+var world: World
 var dome: Node3D
 
 #wave controllers
@@ -30,18 +30,20 @@ var paused = false
 signal game_start()
 signal game_end()
 
+var _scene_base : XRToolsSceneBase
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_scene_base = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
 	wave_end.connect(end_wave)
-	start_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+#wave function controllers
 func start_wave():
 	wave_start.emit()
-	print("wave started")
 	var wave_enemies = rng.randi_range(1, 4) + wave_level
 	current_enemies = wave_enemies
 	for i in range(wave_enemies):
@@ -52,13 +54,18 @@ func end_wave():
 	print("wave ended")
 	next_wave_timmer = get_tree().create_timer(120)
 	next_wave_timmer.timeout.connect(start_wave)
-	
+
+#game function controllers
 func start_game():
-	#var parent = world.get_parent()
-	#world.queue_free()
-	#world = main.instantiate()
-	#parent.add_child(world)
+	spawners.clear()
+	wave_level = 1
+	if next_wave_timmer: next_wave_timmer.timeout.disconnect(start_wave)
 	
+	_scene_base = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
+	world.load_scene("res://Levels/Main.tscn")
+	#world.load_scene("res://Levels/Test.tscn")
+	
+	await get_tree().create_timer(10).timeout
 	next_wave_timmer = get_tree().create_timer(120)
 	next_wave_timmer.timeout.connect(start_wave)
 	game_start.emit()
@@ -67,11 +74,7 @@ func pause_game():
 	paused = !paused
 	
 func end_game():
-	spawners.clear()
-	wave_level = 1
-	next_wave_timmer.timeout.disconnect(start_wave)
-	var parent = world.get_parent()
-	world.queue_free()
-	world = GameOver.instantiate()
-	parent.add_child(world)
-	game_end.emit()
+	world.load_scene("res://Levels/GameOver.tscn")
+
+func back_to_menu():
+	world.exit_to_main_menu()

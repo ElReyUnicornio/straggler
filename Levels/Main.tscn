@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw0f33lm1o3a2"]
+[gd_scene load_steps=12 format=3 uid="uid://cw0f33lm1o3a2"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_b7nhd"]
 [ext_resource type="PackedScene" uid="uid://bw4emnbaf32u" path="res://Objects/Terrain.tscn" id="1_menls"]
 [ext_resource type="Material" uid="uid://daadfv1kf56lu" path="res://Assets/Materials/Sky.tres" id="1_vfs8r"]
 [ext_resource type="PackedScene" uid="uid://durt760wo6m2l" path="res://Objects/Dome.tscn" id="2_pivbg"]
-[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/Player.tscn" id="3_bdk1k"]
+[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/XROrigin3D.tscn" id="5_02ytq"]
+[ext_resource type="PackedScene" uid="uid://cau5wgnn28odv" path="res://Objects/turret/Turret.tscn" id="6_dixkv"]
+[ext_resource type="PackedScene" uid="uid://bx31weip30254" path="res://Objects/Climbable_rock.tscn" id="7_45cgc"]
+[ext_resource type="PackedScene" uid="uid://dwtiuxnll3qeh" path="res://Levels/MineGenerator.tscn" id="8_37n3t"]
+[ext_resource type="PackedScene" uid="uid://dgjnr6f1jv41y" path="res://Objects/mineralCollector/MineralCollector.tscn" id="9_mo2n0"]
 
 [sub_resource type="Sky" id="Sky_jdy7y"]
 sky_material = ExtResource("1_vfs8r")
@@ -16,6 +20,10 @@ ambient_light_color = Color(0.552956, 0.552956, 0.552956, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_b7nhd")
+enable_drill = true
+
+[node name="XROrigin3D" parent="." instance=ExtResource("5_02ytq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.691, 12.445)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jdspg")
@@ -24,9 +32,6 @@ environment = SubResource("Environment_jdspg")
 
 [node name="Dome" parent="." instance=ExtResource("2_pivbg")]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, -0.283, 0)
-
-[node name="Player" parent="." instance=ExtResource("3_bdk1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27082, 5.34071, 7.20694)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 15)
@@ -49,30 +54,70 @@ omni_attenuation = 0.15932
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 light_color = Color(0.735558, 0.677927, 0.873376, 1)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="Turret" parent="." instance=ExtResource("6_dixkv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.855, 0)
+
+[node name="base" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.13441, 0)
-radius = 3.0
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.04964, 0)
+radius = 5.0
 height = 5.0
-sides = 14
+sides = 28
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.20351, 0)
 operation = 2
-radius = 2.9
+radius = 4.9
 height = 4.5
-sides = 14
+sides = 28
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59509, 0)
 radius = 16.0
 height = 0.001
 sides = 28
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.28819, 0)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.28819, 2.18193)
 operation = 2
 radius = 1.0
-sides = 9
+sides = 28
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.365, 0)
+operation = 2
+radius = 0.937
+height = 0.375
+sides = 28
+
+[node name="ClimbableRock" parent="." instance=ExtResource("7_45cgc")]
+transform = Transform3D(1, 0, 0, 0, 4.665, 0, 0, 0, 0.375, 0.0508024, -2.95501, 2.95331)
+
+[node name="ClimbableRock2" parent="." instance=ExtResource("7_45cgc")]
+transform = Transform3D(1, 0, 0, 0, 2.3, 0, 0, 0, 0.375, 0.0508024, -6.76477, 0.646175)
+
+[node name="Mine" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.552, 0)
+size = Vector3(18, 18, 18)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Mine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.552, 0)
+operation = 2
+size = Vector3(16, 16, 16)
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Mine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.71156, 0)
+operation = 2
+radius = 0.937
+height = 2.03259
+sides = 28
+
+[node name="MineGenerator" parent="." instance=ExtResource("8_37n3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -22.552, -8)
+
+[node name="MineralCollector" parent="." instance=ExtResource("9_mo2n0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.4177, 0)

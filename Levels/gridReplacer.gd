@@ -2,9 +2,9 @@ extends GridMap
 
 const blocks := preload("res://Objects/Minerals/mineral.tscn")
 const rockData := preload("res://Objects/Minerals/rock/rock.tres")
-const mineral1Data := preload("res://Objects/Minerals/mineral1/data.tres")
-const mineral2Data := preload("res://Objects/Minerals/mineral2/data.tres")
-const mineral3Data := preload("res://Objects/Minerals/mineral3/data.tres")
+const mineral1Data := preload("res://Objects/Minerals/silicon/data.tres")
+const mineral2Data := preload("res://Objects/Minerals/Bismuth/data.tres")
+const mineral3Data := preload("res://Objects/Minerals/platinum/data.tres")
 
 var replaced_cells := []
 @onready var staticBody := $"../StaticBody3D"

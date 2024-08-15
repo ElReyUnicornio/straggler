@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8jyh7omrav51"]
+[gd_scene load_steps=18 format=3 uid="uid://c343gcqbyb2ct"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_fqs4t"]
-[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_bxu2v"]
-[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/XROrigin3D.tscn" id="2_f0exx"]
-[ext_resource type="PackedScene" uid="uid://ckhanfui4dnxi" path="res://UI/GameOver/index.tscn" id="3_jh286"]
-[ext_resource type="Shader" path="res://Assets/Shaders/Sky.gdshader" id="5_l0pwn"]
-[ext_resource type="Texture2D" uid="uid://bwx4txshot5mu" path="res://Assets/textures/Planetya_tierra.webp" id="6_1ouie"]
+[ext_resource type="Script" path="res://world.gd" id="1_imiji"]
+[ext_resource type="PackedScene" uid="uid://bynmc5a51qwkg" path="res://Entities/Player/XROrigin3D.tscn" id="2_cnvnc"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_87acp"]
+[ext_resource type="PackedScene" uid="uid://dmxrnaw3mibae" path="res://UI/MainMenu/index.tscn" id="4_53f5k"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Sky.gdshader" id="5_5cm00"]
+[ext_resource type="Texture2D" uid="uid://bwx4txshot5mu" path="res://Assets/textures/Planetya_tierra.webp" id="6_e2uwv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_frmle"]
 size = Vector3(3, 0.1, 3)
@@ -35,8 +35,8 @@ seamless = true
 seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_jfwqf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ve7m3"]
-shader = ExtResource("5_l0pwn")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lx2dg"]
+shader = ExtResource("5_5cm00")
 shader_parameter/clouds_samples = 8
 shader_parameter/shadow_sample = 4
 shader_parameter/clouds_density = 0.0
@@ -54,30 +54,30 @@ shader_parameter/sun_scatter = Color(0, 0, 0, 1)
 shader_parameter/astro_tint = Color(0.182918, 0.14319, 0.242026, 1)
 shader_parameter/astro_scale = 5.3
 shader_parameter/astro_intensity = 3.0
-shader_parameter/astro_sampler = ExtResource("6_1ouie")
+shader_parameter/astro_sampler = ExtResource("6_e2uwv")
 shader_parameter/stars_intensity = 5.0
 shader_parameter/shooting_stars_intensity = 10.0
 shader_parameter/shooting_star_tint = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_phmfe"]
-sky_material = SubResource("ShaderMaterial_ve7m3")
+sky_material = SubResource("ShaderMaterial_lx2dg")
 
 [sub_resource type="Environment" id="Environment_vmskj"]
 background_mode = 2
 sky = SubResource("Sky_phmfe")
 
-[node name="GameOver" type="Node3D"]
-script = ExtResource("1_fqs4t")
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_imiji")
 enable_drill = null
 
-[node name="XROrigin3D" parent="." instance=ExtResource("2_f0exx")]
+[node name="XROrigin3D" parent="." instance=ExtResource("2_cnvnc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12018, 0)
 
-[node name="Viewport2Din3D" parent="." instance=ExtResource("2_bxu2v")]
+[node name="Viewport2Din3D" parent="." instance=ExtResource("3_87acp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2449, -3)
 screen_size = Vector2(4, 4)
 collision_layer = 5243008
-scene = ExtResource("3_jh286")
+scene = ExtResource("4_53f5k")
 viewport_size = Vector2(800, 800)
 throttle_fps = 60.0
 

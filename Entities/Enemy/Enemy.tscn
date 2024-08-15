@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://caaud2bth2nf8"]
+[gd_scene load_steps=10 format=3 uid="uid://caaud2bth2nf8"]
 
 [ext_resource type="Script" path="res://Entities/Enemy/Enemy.gd" id="1_8j0j3"]
 [ext_resource type="Material" uid="uid://bo6p3ndv50pxa" path="res://Assets/Materials/button.tres" id="2_fdo28"]
 [ext_resource type="Script" path="res://Components/Hurtbox.gd" id="3_hrtpf"]
 [ext_resource type="Script" path="res://Entities/Health.gd" id="4_xhl2m"]
 [ext_resource type="Script" path="res://Components/Hitbox.gd" id="5_2wmig"]
+[ext_resource type="PackedScene" uid="uid://ccbfhtys4iugr" path="res://Assets/Models/cryman2.fbx" id="6_dee1f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f1jwu"]
 radius = 2.0
@@ -35,6 +36,7 @@ debug_path_custom_color = Color(0.968418, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_wd2ec")
 
 [node name="Hurtbox" type="Area3D" parent="."]
@@ -53,6 +55,7 @@ shape = SubResource("CapsuleShape3D_f1jwu")
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("5_2wmig")
+damage = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88715, -2.99545)
@@ -62,4 +65,22 @@ disabled = true
 [node name="Health" type="Node3D" parent="Hitbox"]
 script = ExtResource("4_xhl2m")
 
+[node name="Root Scene" parent="." instance=ExtResource("6_dee1f")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 2.01771, 0)
+
+[node name="Skeleton3D" parent="Root Scene/RootNode/Armature" index="0"]
+bones/0/rotation = Quaternion(0.707107, 8.42937e-08, 8.42937e-08, 0.707107)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-3.55271e-15, 1.77636e-14, -2.01948e-28, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(2.72851e-07, 7.97496e-08, -0.840159, 0.54234)
+bones/7/rotation = Quaternion(0.0117185, -0.0408124, -0.228693, 0.972572)
+bones/8/rotation = Quaternion(0.267273, -0.156923, -0.199772, 0.929533)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-1.83447e-07, -4.293e-08, 0.837587, 0.546304)
+bones/11/rotation = Quaternion(-9.40636e-08, -4.77357e-08, 0.253773, 0.967264)
+bones/12/rotation = Quaternion(0.256075, 0.0958612, 0.239214, 0.931672)
+
 [connection signal="die" from="Hurtbox/Health" to="." method="die"]
+
+[editable path="Root Scene"]

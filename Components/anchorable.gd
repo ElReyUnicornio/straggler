@@ -1,11 +1,11 @@
 extends RigidBody3D
 class_name Anchorable
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var M_name: String
 
+signal die(body: Anchorable)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func disolve():
+	die.emit(self)
+	GlobalPlayer.add_resource(M_name)
+	queue_free()

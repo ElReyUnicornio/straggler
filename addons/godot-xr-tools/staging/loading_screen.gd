@@ -115,6 +115,7 @@ func set_progress_bar(p_progress : float) -> void:
 ## Set the enable_press_to_continue property
 func set_enable_press_to_continue(p_enable : bool) -> void:
 	enable_press_to_continue = p_enable
+	if p_enable: _on_HoldButton_pressed()
 	_update_enable_press_to_continue()
 
 

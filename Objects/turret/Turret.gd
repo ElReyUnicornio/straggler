@@ -13,7 +13,7 @@ var shooting := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	position_marker.position.y += GlobalPlayer.get_height()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +32,7 @@ func shoot():
 
 func _on_area_3d_body_entered(body):
 	if body is XRToolsPlayerBody:
+		position_marker.position.y = 0.215 + GlobalPlayer.get_height()
 		GlobalPlayer.disableDrill()
 		character = body.get_parent()
 		character.global_position = position_marker.global_position

@@ -22,4 +22,9 @@ func _process(delta):
 		field.position.z = -distance
 		field.mesh.radius = 0.2
 		field.mesh.height = 0.4
-	
+	else: 
+		laser.mesh.height = 0
+		laser.position.z = 0
+		field.position.z = 0
+		field.mesh.radius = 0.05
+		field.mesh.height = 0.1

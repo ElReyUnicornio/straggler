@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckhanfui4dnxi"]
+[gd_scene load_steps=8 format=3 uid="uid://dmxrnaw3mibae"]
 
-[ext_resource type="Material" uid="uid://dg857eje4efl5" path="res://Assets/Materials/HolographicCanvas.tres" id="1_is55a"]
-[ext_resource type="Script" path="res://UI/GameOver/index.gd" id="1_jo0b8"]
-[ext_resource type="Theme" uid="uid://bick8uugjptk2" path="res://UI/default.tres" id="2_lg0f0"]
+[ext_resource type="Script" path="res://UI/MainMenu/index.gd" id="1_2jl6d"]
+[ext_resource type="Material" uid="uid://dg857eje4efl5" path="res://Assets/Materials/HolographicCanvas.tres" id="1_fhtjv"]
+[ext_resource type="Theme" uid="uid://bick8uugjptk2" path="res://UI/default.tres" id="2_hdbe4"]
 
 [sub_resource type="Gradient" id="Gradient_brstr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_brstr")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2p5e"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yu47b"]
 texture = SubResource("GradientTexture2D_tqrcd")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5t3ac"]
@@ -29,10 +29,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jo0b8")
+script = ExtResource("1_2jl6d")
 
 [node name="Panel" type="Panel" parent="."]
-material = ExtResource("1_is55a")
+material = ExtResource("1_fhtjv")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,8 +43,8 @@ offset_right = 24.0
 offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_lg0f0")
-theme_override_styles/panel = SubResource("StyleBoxTexture_f2p5e")
+theme = ExtResource("2_hdbe4")
+theme_override_styles/panel = SubResource("StyleBoxTexture_yu47b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -65,24 +65,22 @@ theme_override_constants/separation = 35
 use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "GAME OVER"
+text = "Straggler"
 label_settings = SubResource("LabelSettings_5t3ac")
 horizontal_alignment = 1
 uppercase = true
 
 [node name="Button" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "RESTART
-"
+text = "START"
 
 [node name="Button2" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "BACK TO MENU"
+text = "CREDITS"
 
 [node name="Button3" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "EXIT TO DESKTOP"
 
 [connection signal="button_down" from="Panel/VBoxContainer/Button" to="." method="_on_button_start_down"]
-[connection signal="button_down" from="Panel/VBoxContainer/Button2" to="." method="_on_button_menu_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/Button3" to="." method="_on_button_quit_down"]
